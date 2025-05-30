@@ -3,76 +3,81 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Dario Amavero – Renaissance 2.0</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dario Amavero – Renaissance 2.0</title>
     <style>
         body {
-            margin: 0;
             font-family: 'Georgia', serif;
-            color: #eee;
-            background: linear-gradient(to bottom, #111 0%, #222 100%);
+            background-color: #fdfaf6;
+            color: #222;
+            margin: 0;
+            padding: 0;
         }
         header {
-            text-align: center;
+            background: linear-gradient(to right, #171717, #2c2c2c);
+            color: white;
             padding: 2em 1em;
-            background-color: #000;
-        }
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 0.2em;
+            text-align: center;
         }
         header img {
-            width: 180px;
+            width: 150px;
             border-radius: 50%;
             margin-top: 1em;
-            border: 2px solid #fff;
         }
-        nav {
+        main {
+            padding: 2em;
+        }
+        h1, h2 {
+            font-family: 'Georgia', serif;
+        }
+        .cover {
+            width: 100%;
+            max-width: 600px;
+            margin: 2em auto;
+            display: block;
+        }
+        .button {
+            background: #222;
+            color: white;
+            padding: 1em 2em;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 2em auto;
+            display: block;
+            text-decoration: none;
             text-align: center;
-            background: #1a1a1a;
+        }
+        .manifest {
+            background-color: #fff9e5;
+            padding: 1.5em;
+            border-left: 5px solid #d4af37;
+            margin: 2em 0;
+        }
+        .comment-section {
+            margin-top: 3em;
+        }
+        .comment-section textarea {
+            width: 100%;
+            height: 100px;
+            font-size: 1em;
             padding: 1em;
         }
-        nav a {
-            margin: 0 1em;
-            color: #ddd;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #fff;
-            text-shadow: 0 0 5px #ffd700;
-        }
-        section {
-            max-width: 800px;
-            margin: 3em auto;
-            padding: 2em;
-            background: #1c1c1c;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #000;
-        }
-        h2 {
-            color: #ffd700;
+        .comment-section button {
+            margin-top: 0.5em;
+            padding: 0.5em 2em;
+            font-size: 1em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
         }
         footer {
+            background-color: #eee;
+            padding: 1em;
             text-align: center;
-            padding: 2em;
-            background-color: #000;
-            color: #888;
-            font-size: 0.9em;
-        }
-        .button-link {
-            display: inline-block;
-            margin-top: 1.5em;
-            padding: 0.8em 1.5em;
-            background-color: #ffd700;
-            color: #111;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            box-shadow: 0 0 10px #ffd70080;
-        }
-        .button-link:hover {
-            background-color: #fff08a;
+            margin-top: 4em;
         }
     </style>
 </head>
@@ -80,46 +85,36 @@
 
 <header>
     <h1>Dario Amavero</h1>
-    <p>Autor · Visionär · Wegbereiter einer neuen Welt</p>
+    <h2>Autor von "Renaissance 2.0 – Eine bessere Welt"</h2>
     <img src="DarioamaveroProfil.jpg" alt="Profilbild von Dario Amavero">
 </header>
 
-<nav>
-    <a href="#autor">Über Dario</a>
-    <a href="#buch">Das Buch</a>
-    <a href="#haus">Haus der Harmonie</a>
-    <a href="#kommentare">Kommentare</a>
-</nav>
+<main>
+    <img src="cover.jpg" alt="Buchcover Renaissance 2.0" class="cover">
 
-<section id="autor">
-    <h2>Über den Autor</h2>
-    <p>Dario Amavero kämpft für eine verbundene, gerechte Welt. Seine Texte sind warm, unbequem, liebevoll und voller Kraft. 
-    Geleitet von Empathie und Einsicht, mischt er Bildsprache mit Klartext. Als wäre Da Vinci auf Einstein getroffen – mit einem Stift in der Hand.</p>
-</section>
+    <a href="https://darioamavero.github.io/haus-der-harmonie/" class="button">Zum Haus der Harmonie</a>
 
-<section id="buch">
-    <h2>Renaissance 2.0 – Eine bessere Welt</h2>
-    <p>Ein Buch, das Hoffnung stiftet, aufrüttelt, und den Samen einer neuen Bewegung sät. Ideal für alle, die Orientierung suchen in einer Zeit voller Brüche. 
-    Ob 16 oder 45, ob Suchende oder Sehende – dieses Werk spricht Herz, Kopf und Seele an.</p>
-    <a href="https://darioamavero.github.io/DarioBuchseite/index.html" class="button-link">Zum Buch</a>
-</section>
+    <div class="manifest">
+        <h2>Darios Manifest</h2>
+        <p>Ich glaube an eine Welt, in der jeder Mensch zählt. In der Mitgefühl, Neugier und Verantwortung unsere Richtung vorgeben. Dieses Buch ist ein Ruf – an dich, an uns alle – das Mögliche neu zu denken und das Unmögliche zu wagen. Renaissance 2.0 ist keine Utopie. Es ist eine Einladung.</p>
+    </div>
 
-<section id="haus">
-    <h2>Das Haus der Harmonie</h2>
-    <p>Eine interaktive Plattform für Austausch, Lernen und Transformation. Der Ort, an dem Gedanken wachsen, Herzen sich verbinden und Hoffnung konkret wird.
-    Werde Teil dieser neuen Welt. Du wirst gebraucht.</p>
-    <a href="https://darioamavero.github.io/HausDerHarmonie/" class="button-link">Zum Haus der Harmonie</a>
-</section>
+    <section>
+        <h2>Einblicke ins Buch</h2>
+        <blockquote>„Was wäre, wenn der Mensch sich selbst nicht mehr im Spiegel der Macht betrachtet, sondern im Spiegel der Menschlichkeit?“</blockquote>
+        <blockquote>„Nicht Technik wird uns retten – sondern unsere Entscheidung, sie gemeinsam, gerecht und gütig einzusetzen.“</blockquote>
+        <blockquote>„Jede Träne, die je geweint wurde, ist ein vergessenes Kapitel im Buch der Chancen.“</blockquote>
+    </section>
 
-<section id="kommentare">
-    <h2>Dein Gedanke zählt</h2>
-    <p>Schreib, was dich bewegt. Inspiriert dich Darios Welt? Hast du Ideen, wie wir gemeinsam weitergehen können?
-    Wir lesen, was du schreibst. Und antworten mit Herz.</p>
-    <p>[Kommentarfunktion in Arbeit – bald kannst du hier deine Gedanken hinterlassen.]</p>
-</section>
+    <section class="comment-section">
+        <h2>Deine Gedanken</h2>
+        <textarea placeholder="Was denkst du über Renaissance 2.0?"></textarea><br>
+        <button onclick="alert('Danke für deinen Beitrag! Bald wird dein Kommentar sichtbar.')">Absenden</button>
+    </section>
+</main>
 
 <footer>
-    &copy; 2025 Dario Amavero · Eine Welt · Ein Geist · Eine Zukunft
+    &copy; 2025 Dario Amavero. Alle Rechte vorbehalten.
 </footer>
 
 </body>
