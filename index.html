@@ -1,83 +1,194 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dario Amavero – Renaissance 2.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: 'Georgia', serif;
-            background-color: #fdfaf6;
-            color: #222;
             margin: 0;
-            padding: 0;
+            font-family: 'Georgia', serif;
+            color: #eee;
+            background: linear-gradient(to bottom, #111 0%, #222 100%);
         }
         header {
-            background: linear-gradient(to right, #171717, #2c2c2c);
-            color: white;
-            padding: 2em 1em;
             text-align: center;
+            padding: 2em 1em;
+            background-color: #000;
+        }
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 0.2em;
         }
         header img {
-            width: 150px;
+            width: 180px;
             border-radius: 50%;
             margin-top: 1em;
+            border: 2px solid #fff;
         }
-        main {
-            padding: 2em;
-        }
-        h1, h2 {
-            font-family: 'Georgia', serif;
-        }
-        .cover {
-            width: 100%;
-            max-width: 600px;
-            margin: 2em auto;
-            display: block;
-        }
-        .button {
-            background: #222;
-            color: white;
-            padding: 1em 2em;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            cursor: pointer;
-            margin: 2em auto;
-            display: block;
-            text-decoration: none;
+        nav {
             text-align: center;
-        }
-        .manifest {
-            background-color: #fff9e5;
-            padding: 1.5em;
-            border-left: 5px solid #d4af37;
-            margin: 2em 0;
-        }
-        .comment-section {
-            margin-top: 3em;
-        }
-        .comment-section textarea {
-            width: 100%;
-            height: 100px;
-            font-size: 1em;
+            background: #1a1a1a;
             padding: 1em;
         }
-        .comment-section button {
-            margin-top: 0.5em;
-            padding: 0.5em 2em;
-            font-size: 1em;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
+        nav a {
+            margin: 0 1em;
+            color: #ddd;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 5px #ffd700;
+        }
+        section {
+            max-width: 800px;
+            margin: 3em auto;
+            padding: 2em;
+            background: #1c1c1c;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #000;
+        }
+        h2 {
+            color: #ffd700;
         }
         footer {
-            background-color: #eee;
-            padding: 1em;
             text-align: center;
-            margin-top: 4em;
+            padding: 2em;
+            background-color: #000;
+            color: #888;
+            font-size: 0.9em;
+        }
+        .button-link {
+            display: inline-block;
+            margin-top: 1.5em;
+            padding: 0.8em 1.5em;
+            background-color: #ffd700;
+            color: #111;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            box-shadow: 0 0 10px #ffd70080;
+        }
+        .button-link:hover {
+            background-color: #fff08a;
+        }
+        
+        /* Buchcover-Stil */
+        .book-cover {
+            max-width: 300px;
+            margin: 1.5em auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Manifest-Bereich */
+        .manifest {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-left: 4px solid #ffd700;
+            padding: 2em;
+            margin: 2em 0;
+            font-style: italic;
+            position: relative;
+        }
+        .manifest::before {
+            content: "✨";
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            font-size: 2em;
+        }
+        
+        /* Buchzitate */
+        .book-quote {
+            background: #2a2a2a;
+            border-left: 3px solid #ffd700;
+            padding: 1.5em;
+            margin: 1.5em 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        .book-quote::before {
+            content: "📖";
+            position: absolute;
+            top: 1em;
+            right: 1em;
+        }
+        .book-quote cite {
+            display: block;
+            margin-top: 1em;
+            font-size: 0.9em;
+            color: #ffd700;
+            font-style: normal;
+        }
+        
+        /* Kommentarbereich */
+        .comment-form {
+            background: #2a2a2a;
+            padding: 2em;
+            border-radius: 8px;
+            margin-top: 2em;
+        }
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 0.8em;
+            margin: 0.5em 0;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            color: #eee;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        .comment-form button {
+            background: #ffd700;
+            color: #111;
+            padding: 0.8em 2em;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1em;
+        }
+        .comment-form button:hover {
+            background: #fff08a;
+        }
+        
+        /* Kommentar-Anzeige */
+        .comments-display {
+            margin-top: 2em;
+        }
+        .comment {
+            background: #1a1a1a;
+            padding: 1.5em;
+            margin: 1em 0;
+            border-radius: 8px;
+            border-left: 3px solid #ffd700;
+        }
+        .comment-author {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+        .comment-date {
+            color: #888;
+            font-size: 0.8em;
+            margin-bottom: 1em;
+        }
+        
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+            nav a {
+                display: block;
+                margin: 0.5em 0;
+            }
+            section {
+                margin: 1em;
+                padding: 1em;
+            }
         }
     </style>
 </head>
@@ -85,37 +196,139 @@
 
 <header>
     <h1>Dario Amavero</h1>
-    <h2>Autor von "Renaissance 2.0 – Eine bessere Welt"</h2>
+    <p>Autor · Visionär · Wegbereiter einer neuen Welt</p>
     <img src="DarioamaveroProfil.jpg" alt="Profilbild von Dario Amavero">
 </header>
 
-<main>
-    <img src="cover.jpg" alt="Buchcover Renaissance 2.0" class="cover">
+<nav>
+    <a href="#autor">Über Dario</a>
+    <a href="#buch">Das Buch</a>
+    <a href="#manifest">Manifest</a>
+    <a href="#haus">Haus der Harmonie</a>
+    <a href="#kommentare">Kommentare</a>
+</nav>
 
-    <a href="https://darioamavero.github.io/haus-der-harmonie/" class="button">Zum Haus der Harmonie</a>
+<section id="autor">
+    <h2>Über den Autor</h2>
+    <p>Dario Amavero kämpft für eine verbundene, gerechte Welt. Seine Texte sind warm, unbequem, liebevoll und voller Kraft. 
+    Geleitet von Empathie und Einsicht, mischt er Bildsprache mit Klartext. Als wäre Da Vinci auf Einstein getroffen – mit einem Stift in der Hand.</p>
+</section>
 
+<section id="manifest">
+    <h2>Manifest einer neuen Zeit</h2>
     <div class="manifest">
-        <h2>Darios Manifest</h2>
-        <p>Ich glaube an eine Welt, in der jeder Mensch zählt. In der Mitgefühl, Neugier und Verantwortung unsere Richtung vorgeben. Dieses Buch ist ein Ruf – an dich, an uns alle – das Mögliche neu zu denken und das Unmögliche zu wagen. Renaissance 2.0 ist keine Utopie. Es ist eine Einladung.</p>
+        <p><strong>„Wir stehen am Wendepunkt der Geschichte."</strong></p>
+        <p>Die alte Welt zerbricht. Eine neue entsteht. Zwischen Angst und Hoffnung, zwischen Trennung und Verbindung, zwischen Zerstörung und Heilung. 
+        Renaissance 2.0 ist nicht nur ein Buch – es ist ein Ruf. Ein Ruf an alle, die spüren: Es muss sich etwas ändern.</p>
+        <p><em>Werde Teil der Bewegung. Die Zukunft wartet nicht.</em></p>
     </div>
+</section>
 
-    <section>
-        <h2>Einblicke ins Buch</h2>
-        <blockquote>„Was wäre, wenn der Mensch sich selbst nicht mehr im Spiegel der Macht betrachtet, sondern im Spiegel der Menschlichkeit?“</blockquote>
-        <blockquote>„Nicht Technik wird uns retten – sondern unsere Entscheidung, sie gemeinsam, gerecht und gütig einzusetzen.“</blockquote>
-        <blockquote>„Jede Träne, die je geweint wurde, ist ein vergessenes Kapitel im Buch der Chancen.“</blockquote>
-    </section>
+<section id="buch">
+    <h2>Renaissance 2.0 – Eine bessere Welt</h2>
+    <img src="Buchcover_Renaissance_2_0.jpg" alt="Buchcover Renaissance 2.0" class="book-cover">
+    
+    <p>Ein Buch, das Hoffnung stiftet, aufrüttelt, und den Samen einer neuen Bewegung sät. Ideal für alle, die Orientierung suchen in einer Zeit voller Brüche. 
+    Ob 16 oder 45, ob Suchende oder Sehende – dieses Werk spricht Herz, Kopf und Seele an.</p>
+    
+    <div class="book-quote">
+        <p>„Die perfektionierte Manipulation ist die unsichtbare Luft, die wir atmen – ein Netz aus Wirtschaft, Medien und Algorithmen, das so allgegenwärtig ist, dass es uns wie Realität erscheint."</p>
+        <cite>— Kapitel 8, Renaissance 2.0</cite>
+    </div>
+    
+    <div class="book-quote">
+        <p>„Die Verabsolutierung der Trennung ist die Tragödie unserer Zeit – sie erzeugt Rassismus, Kolonialismus, ökologische Zerstörung und lässt uns vergessen, dass alles Leben verbunden ist."</p>
+        <cite>— Kapitel 8, Renaissance 2.0</cite>
+    </div>
+    
+    <a href="https://darioamavero.github.io/DarioBuchseite/index.html" class="button-link">Zum Buch</a>
+</section>
 
-    <section class="comment-section">
-        <h2>Deine Gedanken</h2>
-        <textarea placeholder="Was denkst du über Renaissance 2.0?"></textarea><br>
-        <button onclick="alert('Danke für deinen Beitrag! Bald wird dein Kommentar sichtbar.')">Absenden</button>
-    </section>
-</main>
+<section id="haus">
+    <h2>Das Haus der Harmonie</h2>
+    <p>Eine interaktive Plattform für Austausch, Lernen und Transformation. Der Ort, an dem Gedanken wachsen, Herzen sich verbinden und Hoffnung konkret wird.
+    Werde Teil dieser neuen Welt. Du wirst gebraucht.</p>
+    <a href="https://darioamavero.github.io/haus-der-harmonie/" class="button-link">Zum Haus der Harmonie</a>
+</section>
+
+<section id="kommentare">
+    <h2>Dein Gedanke zählt</h2>
+    <p>Schreib, was dich bewegt. Inspiriert dich Darios Welt? Hast du Ideen, wie wir gemeinsam weitergehen können?
+    Wir lesen, was du schreibst. Und antworten mit Herz.</p>
+    
+    <div class="comment-form">
+        <h3>Hinterlasse deinen Kommentar</h3>
+        <form onsubmit="addComment(event)">
+            <input type="text" id="commentName" placeholder="Dein Name" required>
+            <input type="email" id="commentEmail" placeholder="Deine E-Mail (optional)">
+            <textarea id="commentText" rows="4" placeholder="Deine Gedanken..." required></textarea>
+            <button type="submit">Kommentar senden</button>
+        </form>
+    </div>
+    
+    <div class="comments-display" id="commentsDisplay">
+        <h3>Kommentare der Gemeinschaft</h3>
+        <div class="comment">
+            <div class="comment-author">Sarah M.</div>
+            <div class="comment-date">29. Mai 2025</div>
+            <div class="comment-text">Dieses Buch hat mein Leben verändert. Endlich jemand, der ausspricht, was viele von uns fühlen. Danke, Dario!</div>
+        </div>
+        <div class="comment">
+            <div class="comment-author">Michael K.</div>
+            <div class="comment-date">28. Mai 2025</div>
+            <div class="comment-text">Renaissance 2.0 sollte Pflichtlektüre werden. Besonders das Kapitel über Verbundenheit hat mich tief bewegt.</div>
+        </div>
+    </div>
+</section>
 
 <footer>
-    &copy; 2025 Dario Amavero. Alle Rechte vorbehalten.
+    &copy; 2025 Dario Amavero · Eine Welt · Ein Geist · Eine Zukunft
 </footer>
+
+<script>
+function addComment(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('commentName').value;
+    const email = document.getElementById('commentEmail').value;
+    const text = document.getElementById('commentText').value;
+    
+    if (name && text) {
+        const commentsDisplay = document.getElementById('commentsDisplay');
+        const newComment = document.createElement('div');
+        newComment.className = 'comment';
+        
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('de-DE', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        
+        newComment.innerHTML = `
+            <div class="comment-author">${name}</div>
+            <div class="comment-date">${dateStr}</div>
+            <div class="comment-text">${text}</div>
+        `;
+        
+        // Neuen Kommentar an den Anfang hinzufügen
+        commentsDisplay.insertBefore(newComment, commentsDisplay.children[1]);
+        
+        // Formular zurücksetzen
+        document.getElementById('commentName').value = '';
+        document.getElementById('commentEmail').value = '';
+        document.getElementById('commentText').value = '';
+        
+        // Erfolgsanimation
+        newComment.style.backgroundColor = '#3a3a3a';
+        setTimeout(() => {
+            newComment.style.backgroundColor = '#1a1a1a';
+        }, 2000);
+        
+        alert('Vielen Dank für deinen Kommentar! Er wurde hinzugefügt.');
+    }
+}
+</script>
 
 </body>
 </html>
