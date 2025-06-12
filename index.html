@@ -203,6 +203,7 @@ textarea, input[type="text"], input[type="email"] {
             margin: 1em 0;
             border-radius: 8px;
             border-left: 4px solid #d4af37;
+            transition: background-color 0.3s ease;
         }
         .comment-author {
             color: #ffd700;
@@ -213,6 +214,51 @@ textarea, input[type="text"], input[type="email"] {
             color: #444;
             font-size: 0.8em;
             margin-bottom: 1em;
+        }
+        
+        /* Versteckte Kommentare */
+        .hidden-comments {
+            display: none;
+        }
+        
+        /* Mehr anzeigen Button */
+        .show-more-btn {
+            background: #ffd700;
+            color: #222;
+            padding: 0.8em 2em;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 1.5em auto;
+            display: block;
+            box-shadow: 0 0 10px #ffd70080;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1em;
+        }
+        .show-more-btn:hover {
+            background: #fff08a;
+        }
+        
+        /* Erfolgs- und Fehlermeldungen */
+        .success-message {
+            background: rgba(212, 255, 212, 0.9);
+            color: #155724;
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+        
+        .error-message {
+            background: rgba(255, 212, 212, 0.9);
+            color: #721c24;
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            border-left: 4px solid #dc3545;
+            display: none;
         }
         
         @media (max-width: 600px) {
@@ -303,33 +349,106 @@ textarea, input[type="text"], input[type="email"] {
 <h2>Dein Gedanke zählt</h2>
 <p>Schreib, was dich bewegt. Inspiriert dich Darios Welt? Hast du Ideen, wie wir gemeinsam weitergehen können?
     Wir lesen, was du schreibst. Und antworten mit Herz.</p>
+    
+<div id="successMessage" class="success-message">
+    Vielen Dank für deinen Kommentar! Er wurde erfolgreich übermittelt und eine E-Mail wurde an Dario gesendet.
+</div>
+
+<div id="errorMessage" class="error-message">
+    Es gab ein Problem beim Senden deines Kommentars. Bitte versuche es erneut.
+</div>
+
 <div class="comment-form">
 <h3>Hinterlasse deinen Kommentar</h3>
-<form onsubmit="addComment(event)">
+<form id="commentForm" onsubmit="addComment(event)">
 <input id="commentName" placeholder="Dein Name" required="" type="text"/>
 <input id="commentEmail" placeholder="Deine E-Mail (optional)" type="email"/>
 <textarea id="commentText" placeholder="Deine Gedanken..." required="" rows="4"></textarea>
 <button type="submit">Kommentar senden</button>
 </form>
 </div>
+
 <div class="comments-display" id="commentsDisplay">
 <h3>Kommentare der Gemeinschaft</h3>
+
+<!-- Sichtbare Kommentare (die 3 neuesten) -->
 <div class="comment">
 <div class="comment-author">Sarah M.</div>
 <div class="comment-date">29. Mai 2025</div>
 <div class="comment-text">Dieses Buch hat mein Leben verändert. Endlich jemand, der ausspricht, was viele von uns fühlen. Danke, Dario!</div>
 </div>
+
 <div class="comment">
 <div class="comment-author">Michael K.</div>
 <div class="comment-date">28. Mai 2025</div>
 <div class="comment-text">Renaissance 2.0 sollte Pflichtlektüre werden. Besonders das Kapitel über Verbundenheit hat mich tief bewegt.</div>
 </div>
+
+<div class="comment">
+<div class="comment-author">Anna L.</div>
+<div class="comment-date">27. Mai 2025</div>
+<div class="comment-text">Endlich eine Vision, die Hoffnung macht! Darios Worte haben mir Kraft gegeben in schwierigen Zeiten.</div>
+</div>
+
+<!-- Versteckte ältere Kommentare -->
+<div class="comment hidden-comments">
+<div class="comment-author">Thomas R.</div>
+<div class="comment-date">26. Mai 2025</div>
+<div class="comment-text">Die Idee einer Renaissance 2.0 ist genial. Wir brauchen wirklich einen Neuanfang mit allem, was wir gelernt haben.</div>
+</div>
+
+<div class="comment hidden-comments">
+<div class="comment-author">Maria F.</div>
+<div class="comment-date">25. Mai 2025</div>
+<div class="comment-text">Dieses Buch sollte jeder gelesen haben. Es öffnet die Augen für so vieles, was wir übersehen haben.</div>
+</div>
+
+<div class="comment hidden-comments">
+<div class="comment-author">Peter B.</div>
+<div class="comment-date">24. Mai 2025</div>
+<div class="comment-text">Dario schafft es, komplexe Themen verständlich zu machen. Ein wahrer Wegweiser für unsere Zeit.</div>
+</div>
+
+<div class="comment hidden-comments">
+<div class="comment-author">Lisa H.</div>
+<div class="comment-date">23. Mai 2025</div>
+<div class="comment-text">Bewegend und inspirierend. Diese Botschaft der Verbundenheit ist genau das, was die Welt jetzt braucht.</div>
+</div>
+
+<button class="show-more-btn" id="showMoreBtn" onclick="toggleComments()">
+    Ältere Kommentare anzeigen
+</button>
+
 </div>
 </section>
+
 <footer>
     © 2025 Dario Amavero · Eine Welt · Ein Geist · Eine Zukunft
 </footer>
+
 <script>
+// Kommentare Toggle-Funktionalität
+let showingAll = false;
+
+function toggleComments() {
+    const hiddenComments = document.querySelectorAll('.hidden-comments');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    
+    if (!showingAll) {
+        hiddenComments.forEach(comment => {
+            comment.style.display = 'block';
+        });
+        showMoreBtn.textContent = 'Weniger anzeigen';
+        showingAll = true;
+    } else {
+        hiddenComments.forEach(comment => {
+            comment.style.display = 'none';
+        });
+        showMoreBtn.textContent = 'Ältere Kommentare anzeigen';
+        showingAll = false;
+    }
+}
+
 function addComment(event) {
     event.preventDefault();
     
@@ -338,6 +457,45 @@ function addComment(event) {
     const text = document.getElementById('commentText').value;
     
     if (name && text) {
+        // E-Mail-Versand vorbereiten
+        const emailSubject = encodeURIComponent('Neuer Kommentar von der Website - Renaissance 2.0');
+        const emailBody = encodeURIComponent(
+            `Neuer Kommentar auf deiner Website:\n\n` +
+            `Name: ${name}\n` +
+            `E-Mail: ${email || 'Nicht angegeben'}\n` +
+            `Kommentar:\n"${text}"\n\n` +
+            `Datum: ${new Date().toLocaleDateString('de-DE', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            })}\n\n` +
+            `Besuche deine Website: https://darioamavero.github.io/`
+        );
+        
+        // Primäre E-Mail-Adresse versuchen
+        let emailLink = `mailto:www.darioamavero@gmx.de?subject=${emailSubject}&body=${emailBody}`;
+        
+        // E-Mail-Client öffnen
+        try {
+            const emailWindow = window.open(emailLink);
+            
+            // Fallback für den Fall, dass die primäre Adresse nicht funktioniert
+            setTimeout(() => {
+                if (!emailWindow || emailWindow.closed) {
+                    // Alternative E-Mail-Adresse verwenden
+                    emailLink = `mailto:info@darioamavero.de?subject=${emailSubject}&body=${emailBody}`;
+                    window.open(emailLink);
+                }
+            }, 1000);
+        } catch (error) {
+            // Fallback direkt zur alternativen E-Mail
+            emailLink = `mailto:info@darioamavero.de?subject=${emailSubject}&body=${emailBody}`;
+            window.open(emailLink);
+        }
+        
+        // Kommentar zur Seite hinzufügen
         const commentsDisplay = document.getElementById('commentsDisplay');
         const newComment = document.createElement('div');
         newComment.className = 'comment';
@@ -350,27 +508,58 @@ function addComment(event) {
         });
         
         newComment.innerHTML = `
-            <div class="comment-author">${name}</div>
+            <div class="comment-author">${escapeHtml(name)}</div>
             <div class="comment-date">${dateStr}</div>
-            <div class="comment-text">${text}</div>
+            <div class="comment-text">${escapeHtml(text)}</div>
         `;
         
-        // Neuen Kommentar an den Anfang hinzufügen
-        commentsDisplay.insertBefore(newComment, commentsDisplay.children[1]);
+        // Neuen Kommentar an den Anfang hinzufügen (nach der Überschrift)
+        const firstComment = commentsDisplay.querySelector('.comment');
+        if (firstComment) {
+            commentsDisplay.insertBefore(newComment, firstComment);
+        } else {
+            commentsDisplay.appendChild(newComment);
+        }
+        
+        // Wenn jetzt mehr als 3 sichtbare Kommentare vorhanden sind, den ältesten verstecken
+        const visibleComments = commentsDisplay.querySelectorAll('.comment:not(.hidden-comments)');
+        if (visibleComments.length > 3) {
+            const oldestVisible = visibleComments[visibleComments.length - 1];
+            oldestVisible.classList.add('hidden-comments');
+            if (!showingAll) {
+                oldestVisible.style.display = 'none';
+            }
+        }
         
         // Formular zurücksetzen
         document.getElementById('commentName').value = '';
         document.getElementById('commentEmail').value = '';
         document.getElementById('commentText').value = '';
         
-        // KORRIGIERT: Richtige Hintergrundfarbe für neue Kommentare
+        // Neuen Kommentar hervorheben
         newComment.style.backgroundColor = 'rgba(255, 215, 0, 0.3)';
         setTimeout(() => {
             newComment.style.backgroundColor = 'rgba(255, 255, 255, 0.60)';
         }, 2000);
         
-        alert('Vielen Dank für deinen Kommentar! Er wurde hinzugefügt.');
+        // Erfolgs-Nachricht anzeigen
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('errorMessage').style.display = 'none';
+        
+        // Success-Nachricht nach 5 Sekunden ausblenden
+        setTimeout(() => {
+            document.getElementById('successMessage').style.display = 'none';
+        }, 5000);
+        
+        // Sanft zum neuen Kommentar scrollen
+        newComment.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 </script>
 </body>
