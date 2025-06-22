@@ -1,566 +1,69 @@
+<!-- Datei: index.html -->
 <!DOCTYPE html>
-
 <html lang="de">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<style>
-body {
-    font-family: 'Cormorant Garamond', serif !important;
-}
-.kapitel {
-    display: block;
-    font-size: 0.9em;
-    color: #b08d00;
-    font-style: italic;
-    margin-bottom: 0.5em;
-}
-
-textarea, input[type="text"], input[type="email"] {
-    background-color: #f0f0f0;
-    color: #000;
-    border: 1px solid #ccc;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-}
-</style>
-<meta charset="utf-8"/>
-<title>Dario Amavero – Renaissance 2.0</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<style>
-        body {
-            margin: 0;
-            font-family: 'Georgia', serif;
-            color: #eee;
-            background: url('A_website_homepage_for_Dario_Amavero,_structured_l.png') no-repeat center center fixed;
-            background-size: cover;
-        }
-        header {
-            text-align: center;
-            padding: 2em 1em;
-            background: none;
-        }
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 0.2em;
-        }
-        header img {
-            width: 220px;
-            border-radius: 50%; box-shadow: 0 0 20px rgba(0,0,0,0.4);
-            margin-top: 1em;
-            border: 2px solid #fff;
-        }
-        nav {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.60);
-            color: #222;
-            padding: 1em;
-        }
-        nav a {
-            margin: 0 1em;
-            color: #fdf6e3;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #fff;
-            text-shadow: 0 0 5px #ffd700;
-        }
-        section {
-            max-width: 800px;
-            margin: 3em auto;
-            padding: 2em;
-            background: rgba(255, 255, 255, 0.70);
-            color: #222;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #000;
-        }
-        h2 {
-            color: #ffd700;
-        }
-        footer {
-            text-align: center;
-            padding: 2em;
-            background: none;
-            color: #444;
-            font-size: 0.9em;
-        }
-        .button-link {
-            display: inline-block;
-            margin-top: 1.5em;
-            padding: 0.8em 1.5em;
-            background-color: #ffd700;
-            color: #222;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            box-shadow: 0 0 10px #ffd70080;
-        }
-        .button-link:hover {
-            background-color: #fff08a;
-        }
-        
-        /* Buchcover-Stil */
-        .book-cover {
-            max-width: 300px;
-            margin: 1.5em auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Manifest-Bereich */
-        
-.manifest {
-    background: rgba(255, 255, 255, 0.95);
-    color: #222 !important;
-    border-left: 4px solid #d4af37;
-    padding: 2em;
-    margin: 2em 0;
-    font-style: italic;
-    position: relative;
-}
-
-        .manifest::before {
-            content: "✨";
-            position: absolute;
-            top: 1em;
-            right: 1em;
-            font-size: 2em;
-        }
-        
-        /* Buchzitate */
-        .book-quote {
-            background: rgba(255, 255, 255, 0.70);
-            color: #222;
-            border-left: 4px solid #d4af37;
-            padding: 1.5em;
-            margin: 1.5em 0;
-            border-radius: 0 8px 8px 0;
-            position: relative;
-        }
-        .book-quote::before {
-            content: "📖";
-            position: absolute;
-            top: 1em;
-            right: 1em;
-        }
-        .book-quote cite {
-            display: block;
-            margin-top: 1em;
-            font-size: 0.9em;
-            color: #ffd700;
-            font-style: normal;
-        }
-        
-        /* Kommentarbereich */
-        .comment-form {
-            background: rgba(255, 255, 255, 0.70);
-            color: #222;
-            padding: 2em;
-            border-radius: 8px;
-            margin-top: 2em;
-        }
-        
-        /* KORRIGIERT: Bessere Spezifität für Kommentarformular-Felder */
-        .comment-form input[type="text"],
-        .comment-form input[type="email"],
-        .comment-form textarea {
-            background: rgba(255, 255, 255, 0.90) !important;
-            color: #222 !important;
-            border: 1px solid #444;
-            border-radius: 4px;
-            font-family: inherit;
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
-
-        .comment-form button {
-            background: #ffd700;
-            color: #222;
-            padding: 0.8em 2em;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1em;
-        }
-        .comment-form button:hover {
-            background: #fff08a;
-        }
-        
-        /* Kommentar-Anzeige */
-        .comments-display {
-            margin-top: 2em;
-        }
-        .comment {
-            background: rgba(255, 255, 255, 0.60);
-            color: #222;
-            padding: 1.5em;
-            margin: 1em 0;
-            border-radius: 8px;
-            border-left: 4px solid #d4af37;
-            transition: background-color 0.3s ease;
-        }
-        .comment-author {
-            color: #ffd700;
-            font-weight: bold;
-            margin-bottom: 0.5em;
-        }
-        .comment-date {
-            color: #444;
-            font-size: 0.8em;
-            margin-bottom: 1em;
-        }
-        
-        /* Versteckte Kommentare */
-        .hidden-comments {
-            display: none;
-        }
-        
-        /* Mehr anzeigen Button */
-        .show-more-btn {
-            background: #ffd700;
-            color: #222;
-            padding: 0.8em 2em;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 1.5em auto;
-            display: block;
-            box-shadow: 0 0 10px #ffd70080;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1em;
-        }
-        .show-more-btn:hover {
-            background: #fff08a;
-        }
-        
-        /* Erfolgs- und Fehlermeldungen */
-        .success-message {
-            background: rgba(212, 255, 212, 0.9);
-            color: #155724;
-            padding: 1em;
-            border-radius: 8px;
-            margin-bottom: 1em;
-            border-left: 4px solid #28a745;
-            display: none;
-        }
-        
-        .error-message {
-            background: rgba(255, 212, 212, 0.9);
-            color: #721c24;
-            padding: 1em;
-            border-radius: 8px;
-            margin-bottom: 1em;
-            border-left: 4px solid #dc3545;
-            display: none;
-        }
-        
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2em;
-            }
-            nav a {
-                display: block;
-                margin: 0.5em 0;
-            }
-            section {
-                margin: 1em;
-                padding: 1em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nachricht an Dario Amavero</title>
+  <style>
+    body {
+      background: #111;
+      color: #f4f4f4;
+      font-family: "Georgia", serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-weight: normal;
+      color: #ffdd99;
+    }
+    form {
+      background: #222;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 221, 153, 0.2);
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+    }
+    input, textarea, button {
+      font-family: inherit;
+      font-size: 1em;
+      margin: 8px 0;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+    input, textarea {
+      background: #333;
+      color: #fff;
+    }
+    button {
+      background: #ffdd99;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #ffe6b8;
+    }
+  </style>
 </head>
 <body>
-<header>
-<h1>Dario Amavero</h1>
-<p>Autor · Visionär · Wegbereiter einer neuen Welt</p>
-<img alt="Profilbild von Dario Amavero" src="DarioamaveroProfil.jpg"/>
-</header>
-<nav>
-<a href="#autor">Über Dario</a>
-<a href="#buch">Das Buch</a>
-<a href="#manifest">Manifest</a>
-<a href="#haus">Haus der Harmonie</a>
-<a href="#kommentare">Kommentare</a>
-</nav>
-<!-- Einleitungsbox START -->
-<section id="einleitung" style="max-width: 800px; margin: 3em auto; padding: 2em; background: rgba(255,255,255,0.7); color: #222; border-radius: 10px; box-shadow: 0 0 10px #000;">
-<h2 style="text-align: center; color: #b08d00;">Willkommen auf dem Weg zur Renaissance 2.0</h2>
-<p style="font-size: 1.2em; line-height: 1.6;">
-    Stell dir vor, wir könnten von vorne anfangen – aber mit allem, was wir inzwischen wissen.
-    Stell dir eine Welt vor, in der nicht Macht und Gier das Handeln bestimmen,
-    sondern Mitgefühl, Erkenntnis und die gemeinsame Suche nach Wahrheit.
-  </p>
-<p style="font-size: 1.2em; font-style: italic; margin-top: 1.5em;">
-    Dieses Buch ist kein Rückblick.<br/>
-    Es ist eine Entscheidung.<br/><br/>
-    Für einen anderen Kurs. Für ein anderes Miteinander.<br/>
-    Und du bist eingeladen, Teil davon zu sein.
-  </p>
-</section>
-<!-- Einleitungsbox ENDE -->
-<section id="autor">
-<span class="kapitel">Kapitel 1: Der Autor</span>
-<h2>Über den Autor</h2>
-<p>Dario Amavero kämpft für eine verbundene, gerechte Welt. Seine Texte sind warm, unbequem, liebevoll und voller Kraft. 
-    Geleitet von Empathie und Einsicht, mischt er Bildsprache mit Klartext. Als wäre Da Vinci auf Einstein getroffen – mit einem Stift in der Hand.</p>
-</section>
-<section id="manifest">
-<span class="kapitel">Kapitel 2: Das Manifest</span>
-<h2>Manifest einer neuen Zeit</h2>
-<div class="manifest">
-<p><strong>„Wir stehen am Wendepunkt der Geschichte."</strong></p>
-<p>Die alte Welt zerbricht. Eine neue entsteht. Zwischen Angst und Hoffnung, zwischen Trennung und Verbindung, zwischen Zerstörung und Heilung. 
-        Renaissance 2.0 ist nicht nur ein Buch – es ist ein Ruf. Ein Ruf an alle, die spüren: Es muss sich etwas ändern.</p>
-<p><em>Werde Teil der Bewegung. Die Zukunft wartet nicht.</em></p>
-</div>
-</section>
-<section id="buch">
-<span class="kapitel">Kapitel 3: Das Buch</span>
-<h2>Renaissance 2.0 – Eine bessere Welt</h2>
-<img alt="Buchcover Renaissance 2.0" class="book-cover" src="Buchcover_Renaissance_2_0.jpg"/>
-<p>Ein Buch, das Hoffnung stiftet, aufrüttelt, und den Samen einer neuen Bewegung sät. Ideal für alle, die Orientierung suchen in einer Zeit voller Brüche. 
-    Ob 16 oder 45, ob Suchende oder Sehende – dieses Werk spricht Herz, Kopf und Seele an.</p>
-<div class="book-quote">
-<p>„Die perfektionierte Manipulation ist die unsichtbare Luft, die wir atmen – ein Netz aus Wirtschaft, Medien und Algorithmen, das so allgegenwärtig ist, dass es uns wie Realität erscheint."</p>
-<cite>— Kapitel 8, Renaissance 2.0</cite>
-</div>
-<div class="book-quote">
-<p>„Die Verabsolutierung der Trennung ist die Tragödie unserer Zeit – sie erzeugt Rassismus, Kolonialismus, ökologische Zerstörung und lässt uns vergessen, dass alles Leben verbunden ist."</p>
-<cite>— Kapitel 8, Renaissance 2.0</cite>
-</div>
-<a class="button-link" href="leseprobe.html">Zur Buch-Leseprobe</a>
-</section>
-<section id="haus">
-<span class="kapitel">Kapitel 4: Das Haus der Harmonie</span>
-<h2>Das Haus der Harmonie</h2>
-<p>Eine interaktive Plattform für Austausch, Lernen und Transformation. Der Ort, an dem Gedanken wachsen, Herzen sich verbinden und Hoffnung konkret wird.
-    Werde Teil dieser neuen Welt. Du wirst gebraucht.</p>
-<a class="button-link" href="https://darioamavero.github.io/haus-der-harmonie/">Zum Haus der Harmonie</a>
-</section>
-<section id="kommentare">
-<span class="kapitel">Kapitel 5: Kommentare</span>
-<h2>Dein Gedanke zählt</h2>
-<p>Schreib, was dich bewegt. Inspiriert dich Darios Welt? Hast du Ideen, wie wir gemeinsam weitergehen können?
-    Wir lesen, was du schreibst. Und antworten mit Herz.</p>
-    
-<div id="successMessage" class="success-message">
-    Vielen Dank für deinen Kommentar! Er wurde erfolgreich übermittelt und eine E-Mail wurde an Dario gesendet.
-</div>
-
-<div id="errorMessage" class="error-message">
-    Es gab ein Problem beim Senden deines Kommentars. Bitte versuche es erneut.
-</div>
-
-<div class="comment-form">
-<h3>Hinterlasse deinen Kommentar</h3>
-<form id="commentForm" onsubmit="addComment(event)">
-<input id="commentName" placeholder="Dein Name" required="" type="text"/>
-<input id="commentEmail" placeholder="Deine E-Mail (optional)" type="email"/>
-<textarea id="commentText" placeholder="Deine Gedanken..." required="" rows="4"></textarea>
-<button type="submit">Kommentar senden</button>
-</form>
-</div>
-
-<div class="comments-display" id="commentsDisplay">
-<h3>Kommentare der Gemeinschaft</h3>
-
-<!-- Sichtbare Kommentare (die 3 neuesten) -->
-<div class="comment">
-<div class="comment-author">Sarah M.</div>
-<div class="comment-date">29. Mai 2025</div>
-<div class="comment-text">Dieses Buch hat mein Leben verändert. Endlich jemand, der ausspricht, was viele von uns fühlen. Danke, Dario!</div>
-</div>
-
-<div class="comment">
-<div class="comment-author">Michael K.</div>
-<div class="comment-date">28. Mai 2025</div>
-<div class="comment-text">Renaissance 2.0 sollte Pflichtlektüre werden. Besonders das Kapitel über Verbundenheit hat mich tief bewegt.</div>
-</div>
-
-<div class="comment">
-<div class="comment-author">Anna L.</div>
-<div class="comment-date">27. Mai 2025</div>
-<div class="comment-text">Endlich eine Vision, die Hoffnung macht! Darios Worte haben mir Kraft gegeben in schwierigen Zeiten.</div>
-</div>
-
-<!-- Versteckte ältere Kommentare -->
-<div class="comment hidden-comments">
-<div class="comment-author">Thomas R.</div>
-<div class="comment-date">26. Mai 2025</div>
-<div class="comment-text">Die Idee einer Renaissance 2.0 ist genial. Wir brauchen wirklich einen Neuanfang mit allem, was wir gelernt haben.</div>
-</div>
-
-<div class="comment hidden-comments">
-<div class="comment-author">Maria F.</div>
-<div class="comment-date">25. Mai 2025</div>
-<div class="comment-text">Dieses Buch sollte jeder gelesen haben. Es öffnet die Augen für so vieles, was wir übersehen haben.</div>
-</div>
-
-<div class="comment hidden-comments">
-<div class="comment-author">Peter B.</div>
-<div class="comment-date">24. Mai 2025</div>
-<div class="comment-text">Dario schafft es, komplexe Themen verständlich zu machen. Ein wahrer Wegweiser für unsere Zeit.</div>
-</div>
-
-<div class="comment hidden-comments">
-<div class="comment-author">Lisa H.</div>
-<div class="comment-date">23. Mai 2025</div>
-<div class="comment-text">Bewegend und inspirierend. Diese Botschaft der Verbundenheit ist genau das, was die Welt jetzt braucht.</div>
-</div>
-
-<button class="show-more-btn" id="showMoreBtn" onclick="toggleComments()">
-    Ältere Kommentare anzeigen
-</button>
-
-</div>
-</section>
-
-<footer>
-    © 2025 Dario Amavero · Eine Welt · Ein Geist · Eine Zukunft
-</footer>
-
-<script>
-// Kommentare Toggle-Funktionalität
-let showingAll = false;
-
-function toggleComments() {
-    const hiddenComments = document.querySelectorAll('.hidden-comments');
-    const showMoreBtn = document.getElementById('showMoreBtn');
-    
-    if (!showingAll) {
-        hiddenComments.forEach(comment => {
-            comment.style.display = 'block';
-        });
-        showMoreBtn.textContent = 'Weniger anzeigen';
-        showingAll = true;
-    } else {
-        hiddenComments.forEach(comment => {
-            comment.style.display = 'none';
-        });
-        showMoreBtn.textContent = 'Ältere Kommentare anzeigen';
-        showingAll = false;
-    }
-}
-
-function addComment(event) {
-    event.preventDefault();
-    
-    const name = document.getElementById('commentName').value;
-    const email = document.getElementById('commentEmail').value;
-    const text = document.getElementById('commentText').value;
-    
-    if (name && text) {
-        // E-Mail-Versand vorbereiten
-        const emailSubject = encodeURIComponent('Neuer Kommentar von der Website - Renaissance 2.0');
-        const emailBody = encodeURIComponent(
-            `Neuer Kommentar auf deiner Website:\n\n` +
-            `Name: ${name}\n` +
-            `E-Mail: ${email || 'Nicht angegeben'}\n` +
-            `Kommentar:\n"${text}"\n\n` +
-            `Datum: ${new Date().toLocaleDateString('de-DE', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })}\n\n` +
-            `Besuche deine Website: https://darioamavero.github.io/`
-        );
-        
-        // Primäre E-Mail-Adresse versuchen
-        let emailLink = `mailto:www.darioamavero@gmx.de?subject=${emailSubject}&body=${emailBody}`;
-        
-        // E-Mail-Client öffnen
-        try {
-            const emailWindow = window.open(emailLink);
-            
-            // Fallback für den Fall, dass die primäre Adresse nicht funktioniert
-            setTimeout(() => {
-                if (!emailWindow || emailWindow.closed) {
-                    // Alternative E-Mail-Adresse verwenden
-                    emailLink = `mailto:info@darioamavero.de?subject=${emailSubject}&body=${emailBody}`;
-                    window.open(emailLink);
-                }
-            }, 1000);
-        } catch (error) {
-            // Fallback direkt zur alternativen E-Mail
-            emailLink = `mailto:info@darioamavero.de?subject=${emailSubject}&body=${emailBody}`;
-            window.open(emailLink);
-        }
-        
-        // Kommentar zur Seite hinzufügen
-        const commentsDisplay = document.getElementById('commentsDisplay');
-        const newComment = document.createElement('div');
-        newComment.className = 'comment';
-        
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('de-DE', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        });
-        
-        newComment.innerHTML = `
-            <div class="comment-author">${escapeHtml(name)}</div>
-            <div class="comment-date">${dateStr}</div>
-            <div class="comment-text">${escapeHtml(text)}</div>
-        `;
-        
-        // Neuen Kommentar an den Anfang hinzufügen (nach der Überschrift)
-        const firstComment = commentsDisplay.querySelector('.comment');
-        if (firstComment) {
-            commentsDisplay.insertBefore(newComment, firstComment);
-        } else {
-            commentsDisplay.appendChild(newComment);
-        }
-        
-        // Wenn jetzt mehr als 3 sichtbare Kommentare vorhanden sind, den ältesten verstecken
-        const visibleComments = commentsDisplay.querySelectorAll('.comment:not(.hidden-comments)');
-        if (visibleComments.length > 3) {
-            const oldestVisible = visibleComments[visibleComments.length - 1];
-            oldestVisible.classList.add('hidden-comments');
-            if (!showingAll) {
-                oldestVisible.style.display = 'none';
-            }
-        }
-        
-        // Formular zurücksetzen
-        document.getElementById('commentName').value = '';
-        document.getElementById('commentEmail').value = '';
-        document.getElementById('commentText').value = '';
-        
-        // Neuen Kommentar hervorheben
-        newComment.style.backgroundColor = 'rgba(255, 215, 0, 0.3)';
-        setTimeout(() => {
-            newComment.style.backgroundColor = 'rgba(255, 255, 255, 0.60)';
-        }, 2000);
-        
-        // Erfolgs-Nachricht anzeigen
-        document.getElementById('successMessage').style.display = 'block';
-        document.getElementById('errorMessage').style.display = 'none';
-        
-        // Success-Nachricht nach 5 Sekunden ausblenden
-        setTimeout(() => {
-            document.getElementById('successMessage').style.display = 'none';
-        }, 5000);
-        
-        // Sanft zum neuen Kommentar scrollen
-        newComment.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-}
-
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-</script>
+  <h1>Hinterlasse eine Nachricht</h1>
+  <form action="https://formsubmit.co/info@darioamavero.de" method="POST">
+    <input type="text" name="name" placeholder="Dein Name" required>
+    <input type="email" name="email" placeholder="Deine E-Mail" required>
+    <textarea name="message" placeholder="Deine Nachricht..." rows="4" required></textarea>
+    <button type="submit">Abschicken</button>
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="Neue Nachricht von der Website">
+  </form>
 </body>
 </html>
