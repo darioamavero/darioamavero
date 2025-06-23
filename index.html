@@ -351,7 +351,7 @@ textarea, input[type="text"], input[type="email"] {
     Wir lesen, was du schreibst. Und antworten mit Herz.</p>
     
 <div id="successMessage" class="success-message">
-    Vielen Dank für deinen Kommentar! Er wurde erfolgreich übermittelt und eine E-Mail wurde an Dario gesendet.
+    Vielen Dank für deinen Kommentar! Er wurde erfolgreich übermittelt und wird an Dario gesendet.
 </div>
 
 <div id="errorMessage" class="error-message">
@@ -360,11 +360,15 @@ textarea, input[type="text"], input[type="email"] {
 
 <div class="comment-form">
 <h3>Hinterlasse deinen Kommentar</h3>
-<form id="commentForm" onsubmit="addComment(event)">
-<input id="commentName" placeholder="Dein Name" required="" type="text"/>
-<input id="commentEmail" placeholder="Deine E-Mail (optional)" type="email"/>
-<textarea id="commentText" placeholder="Deine Gedanken..." required="" rows="4"></textarea>
+<form action="https://formsubmit.co/info@darioamavero.de" method="POST" onsubmit="handleFormSubmit(event)">
+<input type="text" name="name" placeholder="Dein Name" required/>
+<input type="email" name="email" placeholder="Deine E-Mail (optional)"/>
+<textarea name="message" placeholder="Deine Gedanken..." rows="4" required></textarea>
 <button type="submit">Kommentar senden</button>
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_subject" value="Neuer Kommentar von Renaissance 2.0 Website">
+<input type="hidden" name="_next" value="https://darioamavero.de/#kommentare">
 </form>
 </div>
 
@@ -449,112 +453,38 @@ function toggleComments() {
     }
 }
 
-function addComment(event) {
-    event.preventDefault();
+function handleFormSubmit(event) {
+    // Das Formular wird normal über FormSubmit.co gesendet
+    // Wir zeigen nur eine Erfolgs-Nachricht an
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
     
-    const name = document.getElementById('commentName').value;
-    const email = document.getElementById('commentEmail').value;
-    const text = document.getElementById('commentText').value;
+    // Erfolgs-Nachricht anzeigen
+    successMessage.style.display = 'block';
+    errorMessage.style.display = 'none';
     
-    if (name && text) {
-        // E-Mail-Versand vorbereiten
-        const emailSubject = encodeURIComponent('Neuer Kommentar von der Website - Renaissance 2.0');
-        const emailBody = encodeURIComponent(
-            `Neuer Kommentar auf deiner Website:\n\n` +
-            `Name: ${name}\n` +
-            `E-Mail: ${email || 'Nicht angegeben'}\n` +
-            `Kommentar:\n"${text}"\n\n` +
-            `Datum: ${new Date().toLocaleDateString('de-DE', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })}\n\n` +
-            `Besuche deine Website: https://darioamavero.github.io/`
-        );
-        
-        // Primäre E-Mail-Adresse versuchen
-        let emailLink = `mailto:www.darioamavero@gmx.de?subject=${emailSubject}&body=${emailBody}`;
-        
-        // E-Mail-Client öffnen
-        try {
-            const emailWindow = window.open(emailLink);
-            
-            // Fallback für den Fall, dass die primäre Adresse nicht funktioniert
-            setTimeout(() => {
-                if (!emailWindow || emailWindow.closed) {
-                    // Alternative E-Mail-Adresse verwenden
-                    emailLink = `mailto:info@darioamavero.de?subject=${emailSubject}&body=${emailBody}`;
-                    window.open(emailLink);
-                }
-            }, 1000);
-        } catch (error) {
-            // Fallback direkt zur alternativen E-Mail
-            emailLink = `mailto:info@darioamavero.de?subject=${emailSubject}&body=${emailBody}`;
-            window.open(emailLink);
-        }
-        
-        // Kommentar zur Seite hinzufügen
-        const commentsDisplay = document.getElementById('commentsDisplay');
-        const newComment = document.createElement('div');
-        newComment.className = 'comment';
-        
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('de-DE', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        });
-        
-        newComment.innerHTML = `
-            <div class="comment-author">${escapeHtml(name)}</div>
-            <div class="comment-date">${dateStr}</div>
-            <div class="comment-text">${escapeHtml(text)}</div>
-        `;
-        
-        // Neuen Kommentar an den Anfang hinzufügen (nach der Überschrift)
-        const firstComment = commentsDisplay.querySelector('.comment');
-        if (firstComment) {
-            commentsDisplay.insertBefore(newComment, firstComment);
-        } else {
-            commentsDisplay.appendChild(newComment);
-        }
-        
-        // Wenn jetzt mehr als 3 sichtbare Kommentare vorhanden sind, den ältesten verstecken
-        const visibleComments = commentsDisplay.querySelectorAll('.comment:not(.hidden-comments)');
-        if (visibleComments.length > 3) {
-            const oldestVisible = visibleComments[visibleComments.length - 1];
-            oldestVisible.classList.add('hidden-comments');
-            if (!showingAll) {
-                oldestVisible.style.display = 'none';
-            }
-        }
-        
-        // Formular zurücksetzen
-        document.getElementById('commentName').value = '';
-        document.getElementById('commentEmail').value = '';
-        document.getElementById('commentText').value = '';
-        
-        // Neuen Kommentar hervorheben
-        newComment.style.backgroundColor = 'rgba(255, 215, 0, 0.3)';
-        setTimeout(() => {
-            newComment.style.backgroundColor = 'rgba(255, 255, 255, 0.60)';
-        }, 2000);
-        
-        // Erfolgs-Nachricht anzeigen
-        document.getElementById('successMessage').style.display = 'block';
-        document.getElementById('errorMessage').style.display = 'none';
-        
-        // Success-Nachricht nach 5 Sekunden ausblenden
-        setTimeout(() => {
-            document.getElementById('successMessage').style.display = 'none';
-        }, 5000);
-        
-        // Sanft zum neuen Kommentar scrollen
-        newComment.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    // Success-Nachricht nach 5 Sekunden ausblenden
+    setTimeout(() => {
+        successMessage.style.display = 'none';
+    }, 5000);
+    
+    // Zum Kommentarbereich scrollen
+    document.getElementById('kommentare').scrollIntoView({ behavior: 'smooth' });
 }
+
+// Prüfen, ob der Benutzer von FormSubmit zurückgekehrt ist
+window.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true' || window.location.hash === '#kommentare') {
+        // Zeige Erfolgs-Nachricht wenn von FormSubmit zurückgekehrt
+        setTimeout(() => {
+            document.getElementById('successMessage').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        }, 500);
+    }
+});
 
 function escapeHtml(text) {
     const div = document.createElement('div');
