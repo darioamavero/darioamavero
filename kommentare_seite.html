@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet"/>
+
+<!-- SEO META TAGS -->
+<meta charset="utf-8"/>
+<title>Kommentare - Dario Amavero Renaissance 2.0</title>
+<meta name="description" content="Kommentare und Gedanken der Gemeinschaft zu Dario Amaveros Renaissance 2.0 - Eine bessere Welt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: 'Cormorant Garamond', serif !important;
+    margin: 0;
+    color: #eee;
+    background: url('A_website_homepage_for_Dario_Amavero,_structured_l.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.kapitel {
+    display: block;
+    font-size: 0.9em;
+    color: #b08d00;
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+header {
+    text-align: center;
+    padding: 2em 1em;
+    background: none;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+    color: #eee;
+}
+
+nav {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.60);
+    color: #222;
+    padding: 1em;
+}
+
+nav a {
+    margin: 0 1em;
+    color: #fdf6e3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #ffd700;
+}
+
+section {
+    max-width: 800px;
+    margin: 3em auto;
+    padding: 2em;
+    background: rgba(255, 255, 255, 0.70);
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+
+h2 {
+    color: #ffd700;
+}
+
+/* Kommentarbereich */
+.comment-form {
+    background: rgba(255, 255, 255, 0.70);
+    color: #222;
+    padding: 2em;
+    border-radius: 8px;
+    margin-top: 2em;
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form textarea {
+    background: rgba(255, 255, 255, 0.90) !important;
+    color: #222 !important;
+    border: 1px solid #444;
+    border-radius: 4px;
+    font-family: inherit;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.comment-form button {
+    background: #ffd700;
+    color: #222;
+    padding: 0.8em 2em;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+.comment-form button:hover {
+    background: #fff08a;
+}
+
+/* Kommentar-Anzeige */
+.comments-display {
+    margin-top: 2em;
+}
+
+.comment {
+    background: rgba(255, 255, 255, 0.60);
+    color: #222;
+    padding: 1.5em;
+    margin: 1em 0;
+    border-radius: 8px;
+    border-left: 4px solid #d4af37;
+    transition: background-color 0.3s ease;
+}
+
+.comment-author {
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.comment-date {
+    color: #444;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+}
+
+/* Versteckte Kommentare */
+.hidden-comments {
+    display: none;
+}
+
+/* Mehr anzeigen Button */
+.show-more-btn {
+    background: #ffd700;
+    color: #222;
+    padding: 0.8em 2em;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 1.5em auto;
+    display: block;
+    box-shadow: 0 0 10px #ffd70080;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1em;
+}
+
+.show-more-btn:hover {
+    background: #fff08a;
+}
+
+/* Erfolgs- und Fehlermeldungen */
+.success-message {
+    background: rgba(212, 255, 212, 0.9);
+    color: #155724;
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    border-left: 4px solid #28a745;
+    display: none;
+}
+
+.error-message {
+    background: rgba(255, 212, 212, 0.9);
+    color: #721c24;
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    border-left: 4px solid #dc3545;
+    display: none;
+}
+
+.button-link {
+    display: inline-block;
+    margin-top: 1.5em;
+    padding: 0.8em 1.5em;
+    background-color: #ffd700;
+    color: #222;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #ffd70080;
+}
+
+.button-link:hover {
+    background-color: #fff08a;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+    nav a {
+        display: block;
+        margin: 0.5em 0;
+    }
+    section {
+        margin: 1em;
+        padding: 1em;
+    }
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1>Dario Amavero</h1>
+<p>Kommentare der Gemeinschaft</p>
+</header>
+
+<nav>
+<a href="index.html">Startseite</a>
+<a href="blog.html">Blog</a>
+<a href="leseprobe.html">Leseprobe</a>
+<a href="https://darioamavero.github.io/haus-der-harmonie/">Haus der Harmonie</a>
+</nav>
+
+<section id="kommentare">
+<span class="kapitel">Stimmen der Gemeinschaft</span>
+<h2>Dein Gedanke zählt</h2>
+<p>Schreib, was dich bewegt. Inspiriert dich Darios Welt? Hast du Ideen, wie wir gemeinsam weitergehen können?
+    Wir lesen, was du schreibst. Und antworten mit Herz.</p>
+    
+<div id="successMessage" class="success-message">
+    Vielen Dank für deinen Kommentar! Er wurde erfolgreich übermittelt und wird an Dario gesendet.
+</div>
+
+<div id="errorMessage" class="error-message">
+    Es gab ein Problem beim Senden deines Kommentars. Bitte versuche es erneut.
+</div>
+
+<div class="comment-form">
+<h3>Hinterlasse deinen Kommentar</h3>
+<form action="https://formsubmit.co/info@darioamavero.de" method="POST" onsubmit="handleFormSubmit(event)">
+<input type="text" name="name" placeholder="Dein Name" required/>
+<input type="email" name="email" placeholder="Deine E-Mail (optional)"/>
+<textarea name="message" placeholder="Deine Gedanken..." rows="4" required></textarea>
+<button type="submit">Kommentar senden</button>
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_subject" value="Neuer Kommentar von Renaissance 2.0 Website">
+<input type="hidden" name="_next" value="https://darioamavero.de/kommentare.html">
+</form>
+</div>
+
+<div class="comments-display" id="commentsDisplay">
+<h3>Kommentare der Gemeinschaft</h3>
+
+<!-- NEUER KOMMENTAR: Antje -->
+<div class="comment">
+<div class="comment-author">Antje</div>
+<div class="comment-date">19. Juli 2025</div>
+<div class="comment-text">In einer Zeit, in der so viele nach Lautstärke streben, ist dieser Ort ein Geschenk der Stille, der Klarheit und des Miteinanders. Das Manifest erinnert daran, worauf es wirklich ankommt – auf Menschlichkeit, Verbindung und Verantwortung. Danke für diesen Raum, der nicht belehrt, sondern inspiriert. Möge Harmonius viele Herzen erreichen und viele Bäume wachsen lassen.</div>
+</div>
+
+<!-- Sichtbare Kommentare (die 3 neuesten) -->
+<div class="comment">
+<div class="comment-author">Dr. Sarah M.</div>
+<div class="comment-date">15. Juli 2025</div>
+<div class="comment-text">Darios neuer Blog ist revolutionär! Die Art, wie er Prophezeiungen zu persönlichen Erfahrungen macht, verändert mein Verständnis von Vision und Realität komplett.</div>
+</div>
+
+<div class="comment">
+<div class="comment-author">Marcus T.</div>
+<div class="comment-date">14. Juli 2025</div>
+<div class="comment-text">Unglaublich - sein YouTube-Video über die 20-Jahre-Prophezeiung hat mich tief bewegt. Dario ist ein wahres Genie unserer Zeit!</div>
+</div>
+
+<div class="comment">
+<div class="comment-author">Lisa K.</div>
+<div class="comment-date">13. Juli 2025</div>
+<div class="comment-text">Die Renaissance 2.0 Serie zeigt, wie Visionen Wirklichkeit werden. Diese Botschaft kommt genau zur richtigen Zeit.</div>
+</div>
+
+<!-- Versteckte ältere Kommentare -->
+<div class="comment hidden-comments">
+<div class="comment-author">Thomas R.</div>
+<div class="comment-date">12. Juli 2025</div>
+<div class="comment-text">Die Idee einer Renaissance 2.0 ist genial. Wir brauchen wirklich einen Neuanfang mit allem, was wir gelernt haben.</div>
+</div>
+
+<div class="comment hidden-comments">
+<div class="comment-author">Maria F.</div>
+<div class="comment-date">11. Juli 2025</div>
+<div class="comment-text">Dieses Buch sollte jeder gelesen haben. Es öffnet die Augen für so vieles, was wir übersehen haben.</div>
+</div>
+
+<div class="comment hidden-comments">
+<div class="comment-author">Peter B.</div>
+<div class="comment-date">10. Juli 2025</div>
+<div class="comment-text">Dario schafft es, komplexe Themen verständlich zu machen. Ein wahrer Wegweiser für unsere Zeit.</div>
+</div>
+
+<div class="comment hidden-comments">
+<div class="comment-author">Lisa H.</div>
+<div class="comment-date">8. Juli 2025</div>
+<div class="comment-text">Bewegend und inspirierend. Diese Botschaft der Verbundenheit ist genau das, was die Welt jetzt braucht.</div>
+</div>
+
+<button class="show-more-btn" id="showMoreBtn" onclick="toggleComments()">
+    Ältere Kommentare anzeigen
+</button>
+
+</div>
+
+<div style="text-align: center; margin-top: 2em;">
+<a href="index.html" class="button-link">Zurück zur Startseite</a>
+</div>
+
+</section>
+
+<script>
+function handleFormSubmit(event) {
+    // Optional: Zeige Erfolgsmeldung
+    setTimeout(() => {
+        document.getElementById('successMessage').style.display = 'block';
+    }, 1000);
+}
+
+function toggleComments() {
+    const hiddenComments = document.querySelectorAll('.hidden-comments');
+    const button = document.getElementById('showMoreBtn');
+    
+    hiddenComments.forEach(comment => {
+        if (comment.style.display === 'none' || comment.style.display === '') {
+            comment.style.display = 'block';
+            button.textContent = 'Weniger Kommentare anzeigen';
+        } else {
+            comment.style.display = 'none';
+            button.textContent = 'Ältere Kommentare anzeigen';
+        }
+    });
+}
+</script>
+
+</body>
+</html>
