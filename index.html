@@ -292,7 +292,12 @@
 <style>
 body {
     font-family: 'Cormorant Garamond', serif !important;
+    margin: 0;
+    color: #eee;
+    background: url('A_website_homepage_for_Dario_Amavero,_structured_l.png') no-repeat center center fixed;
+    background-size: cover;
 }
+
 .kapitel {
     display: block;
     font-size: 0.9em;
@@ -311,90 +316,82 @@ textarea, input[type="text"], input[type="email"] {
     margin-bottom: 10px;
 }
 
-<style>
-        body {
-            margin: 0;
-            font-family: 'Georgia', serif;
-            color: #eee;
-            background: url('A_website_homepage_for_Dario_Amavero,_structured_l.png') no-repeat center center fixed;
-            background-size: cover;
-        }
-        header {
-            text-align: center;
-            padding: 2em 1em;
-            background: none;
-        }
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 0.2em;
-        }
-        header img {
-            width: 220px;
-            border-radius: 50%; box-shadow: 0 0 20px rgba(0,0,0,0.4);
-            margin-top: 1em;
-            border: 2px solid #fff;
-        }
-        nav {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.60);
-            color: #222;
-            padding: 1em;
-        }
-        nav a {
-            margin: 0 1em;
-            color: #fdf6e3;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #fff;
-            text-shadow: 0 0 5px #ffd700;
-        }
-        section {
-            max-width: 800px;
-            margin: 3em auto;
-            padding: 2em;
-            background: rgba(255, 255, 255, 0.70);
-            color: #222;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #000;
-        }
-        h2 {
-            color: #ffd700;
-        }
-        footer {
-            text-align: center;
-            padding: 2em;
-            background: none;
-            color: #444;
-            font-size: 0.9em;
-        }
-        .button-link {
-            display: inline-block;
-            margin-top: 1.5em;
-            padding: 0.8em 1.5em;
-            background-color: #ffd700;
-            color: #222;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            box-shadow: 0 0 10px #ffd70080;
-        }
-        .button-link:hover {
-            background-color: #fff08a;
-        }
-        
-        /* Buchcover-Stil */
-        .book-cover {
-            max-width: 300px;
-            margin: 1.5em auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Manifest-Bereich */
-        
+header {
+    text-align: center;
+    padding: 2em 1em;
+    background: none;
+}
+header h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+}
+header img {
+    width: 220px;
+    border-radius: 50%; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    margin-top: 1em;
+    border: 2px solid #fff;
+}
+nav {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.60);
+    color: #222;
+    padding: 1em;
+}
+nav a {
+    margin: 0 1em;
+    color: #fdf6e3;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #ffd700;
+}
+section {
+    max-width: 800px;
+    margin: 3em auto;
+    padding: 2em;
+    background: rgba(255, 255, 255, 0.70);
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+h2 {
+    color: #ffd700;
+}
+footer {
+    text-align: center;
+    padding: 2em;
+    background: none;
+    color: #444;
+    font-size: 0.9em;
+}
+.button-link {
+    display: inline-block;
+    margin-top: 1.5em;
+    padding: 0.8em 1.5em;
+    background-color: #ffd700;
+    color: #222;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #ffd70080;
+}
+.button-link:hover {
+    background-color: #fff08a;
+}
+
+/* Buchcover-Stil */
+.book-cover {
+    max-width: 300px;
+    margin: 1.5em auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Manifest-Bereich */
 .manifest {
     background: rgba(255, 255, 255, 0.95);
     color: #222 !important;
@@ -405,159 +402,159 @@ textarea, input[type="text"], input[type="email"] {
     position: relative;
 }
 
-        .manifest::before {
-            content: "✨";
-            position: absolute;
-            top: 1em;
-            right: 1em;
-            font-size: 2em;
-        }
-        
-        /* Buchzitate */
-        .book-quote {
-            background: rgba(255, 255, 255, 0.70);
-            color: #222;
-            border-left: 4px solid #d4af37;
-            padding: 1.5em;
-            margin: 1.5em 0;
-            border-radius: 0 8px 8px 0;
-            position: relative;
-        }
-        .book-quote::before {
-            content: "📖";
-            position: absolute;
-            top: 1em;
-            right: 1em;
-        }
-        .book-quote cite {
-            display: block;
-            margin-top: 1em;
-            font-size: 0.9em;
-            color: #ffd700;
-            font-style: normal;
-        }
-        
-        /* Kommentarbereich */
-        .comment-form {
-            background: rgba(255, 255, 255, 0.70);
-            color: #222;
-            padding: 2em;
-            border-radius: 8px;
-            margin-top: 2em;
-        }
-        
-        /* KORRIGIERT: Bessere Spezifität für Kommentarformular-Felder */
-        .comment-form input[type="text"],
-        .comment-form input[type="email"],
-        .comment-form textarea {
-            background: rgba(255, 255, 255, 0.90) !important;
-            color: #222 !important;
-            border: 1px solid #444;
-            border-radius: 4px;
-            font-family: inherit;
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
+.manifest::before {
+    content: "✨";
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 2em;
+}
 
-        .comment-form button {
-            background: #ffd700;
-            color: #222;
-            padding: 0.8em 2em;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1em;
-        }
-        .comment-form button:hover {
-            background: #fff08a;
-        }
-        
-        /* Kommentar-Anzeige */
-        .comments-display {
-            margin-top: 2em;
-        }
-        .comment {
-            background: rgba(255, 255, 255, 0.60);
-            color: #222;
-            padding: 1.5em;
-            margin: 1em 0;
-            border-radius: 8px;
-            border-left: 4px solid #d4af37;
-            transition: background-color 0.3s ease;
-        }
-        .comment-author {
-            color: #ffd700;
-            font-weight: bold;
-            margin-bottom: 0.5em;
-        }
-        .comment-date {
-            color: #444;
-            font-size: 0.8em;
-            margin-bottom: 1em;
-        }
-        
-        /* Versteckte Kommentare */
-        .hidden-comments {
-            display: none;
-        }
-        
-        /* Mehr anzeigen Button */
-        .show-more-btn {
-            background: #ffd700;
-            color: #222;
-            padding: 0.8em 2em;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 1.5em auto;
-            display: block;
-            box-shadow: 0 0 10px #ffd70080;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1em;
-        }
-        .show-more-btn:hover {
-            background: #fff08a;
-        }
-        
-        /* Erfolgs- und Fehlermeldungen */
-        .success-message {
-            background: rgba(212, 255, 212, 0.9);
-            color: #155724;
-            padding: 1em;
-            border-radius: 8px;
-            margin-bottom: 1em;
-            border-left: 4px solid #28a745;
-            display: none;
-        }
-        
-        .error-message {
-            background: rgba(255, 212, 212, 0.9);
-            color: #721c24;
-            padding: 1em;
-            border-radius: 8px;
-            margin-bottom: 1em;
-            border-left: 4px solid #dc3545;
-            display: none;
-        }
-        
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2em;
-            }
-            nav a {
-                display: block;
-                margin: 0.5em 0;
-            }
-            section {
-                margin: 1em;
-                padding: 1em;
-            }
-        }
-    </style>
+/* Buchzitate */
+.book-quote {
+    background: rgba(255, 255, 255, 0.70);
+    color: #222;
+    border-left: 4px solid #d4af37;
+    padding: 1.5em;
+    margin: 1.5em 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+}
+.book-quote::before {
+    content: "📖";
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+.book-quote cite {
+    display: block;
+    margin-top: 1em;
+    font-size: 0.9em;
+    color: #ffd700;
+    font-style: normal;
+}
+
+/* Kommentarbereich */
+.comment-form {
+    background: rgba(255, 255, 255, 0.70);
+    color: #222;
+    padding: 2em;
+    border-radius: 8px;
+    margin-top: 2em;
+}
+
+/* KORRIGIERT: Bessere Spezifität für Kommentarformular-Felder */
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form textarea {
+    background: rgba(255, 255, 255, 0.90) !important;
+    color: #222 !important;
+    border: 1px solid #444;
+    border-radius: 4px;
+    font-family: inherit;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.comment-form button {
+    background: #ffd700;
+    color: #222;
+    padding: 0.8em 2em;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1em;
+}
+.comment-form button:hover {
+    background: #fff08a;
+}
+
+/* Kommentar-Anzeige */
+.comments-display {
+    margin-top: 2em;
+}
+.comment {
+    background: rgba(255, 255, 255, 0.60);
+    color: #222;
+    padding: 1.5em;
+    margin: 1em 0;
+    border-radius: 8px;
+    border-left: 4px solid #d4af37;
+    transition: background-color 0.3s ease;
+}
+.comment-author {
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+.comment-date {
+    color: #444;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+}
+
+/* Versteckte Kommentare */
+.hidden-comments {
+    display: none;
+}
+
+/* Mehr anzeigen Button */
+.show-more-btn {
+    background: #ffd700;
+    color: #222;
+    padding: 0.8em 2em;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 1.5em auto;
+    display: block;
+    box-shadow: 0 0 10px #ffd70080;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1em;
+}
+.show-more-btn:hover {
+    background: #fff08a;
+}
+
+/* Erfolgs- und Fehlermeldungen */
+.success-message {
+    background: rgba(212, 255, 212, 0.9);
+    color: #155724;
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    border-left: 4px solid #28a745;
+    display: none;
+}
+
+.error-message {
+    background: rgba(255, 212, 212, 0.9);
+    color: #721c24;
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    border-left: 4px solid #dc3545;
+    display: none;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+    nav a {
+        display: block;
+        margin: 0.5em 0;
+    }
+    section {
+        margin: 1em;
+        padding: 1em;
+    }
+}
+</style>
 </head>
 <body>
 <header>
