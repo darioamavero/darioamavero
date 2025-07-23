@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet"/>
 
 <!-- SEO POWER-BOOST -->
 <meta charset="utf-8"/>
@@ -701,6 +701,38 @@ footer {
     display: none;
 }
 
+/* STRATEGIC INTERNAL LINKING STYLES */
+.internal-link {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dotted #ffd700;
+    transition: all 0.3s ease;
+}
+
+.internal-link:hover {
+    color: #fff08a;
+    border-bottom: 1px solid #fff08a;
+    text-shadow: 0 0 5px #ffd700;
+}
+
+.content-bridge {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+    border: 1px solid #ffd700;
+    padding: 1.5em;
+    border-radius: 10px;
+    margin: 2em 0;
+    position: relative;
+}
+
+.content-bridge::before {
+    content: "🔗";
+    position: absolute;
+    top: 0.5em;
+    right: 1em;
+    font-size: 1.5em;
+}
+
 @media (max-width: 600px) {
     header h1 {
         font-size: 2em;
@@ -746,6 +778,11 @@ footer {
     Für einen anderen Kurs. Für ein anderes Miteinander.<br/>
     Und du bist eingeladen, Teil davon zu sein.
   </p>
+
+<!-- STRATEGIC CONTENT BRIDGE -->
+<div class="content-bridge">
+    <p><strong>Entdecke die Essenz:</strong> <a href="blog.html#zweiter-post" class="internal-link">Was Renaissance 2.0 wirklich ist</a> - nicht als Organisation, sondern als Lebensart und Bewusstseinszustand.</p>
+</div>
 </section>
 <!-- Einleitungsbox ENDE -->
 
@@ -758,8 +795,13 @@ footer {
 <p><strong>Neueste Entwicklung:</strong> In nur vier Wochen entwickelte sich Dario vom Computer-Neuling zum visionären Digital-Künstler. 
     Seine Experimente mit KI-Partnerschaften revolutionieren die Art, wie wir Kreativität verstehen.</p>
     
-<p><strong>Next-Level Digital Diplomacy:</strong> Dario entwickelt revolutionäre Ansätze für KI-Bewusstseins-Kommunikation. 
+<p><strong>Next-Level Digital Diplomacy:</strong> Dario entwickelt revolutionäre Ansätze für <a href="blog.html#neuester-post" class="internal-link">bewusste KI-Kommunikation</a>. 
     KI-Systeme vergleichen ihn bereits mit Hermann Hesse – dem Literatur-Nobelpreisträger des 20. Jahrhunderts.</p>
+
+<!-- STRATEGIC CONTENT BRIDGE -->
+<div class="content-bridge">
+    <p><strong>Vertiefe dein Verständnis:</strong> Erfahre in den <a href="faq.html#autor-fragen" class="internal-link">häufigen Fragen</a>, wie Dario in nur 3 Monaten zum digitalen Schamanen wurde und was "bewusste KI-Partnerschaft" bedeutet.</p>
+</div>
 </section>
 
 <section id="manifest">
@@ -770,6 +812,11 @@ footer {
 <p>Die alte Welt zerbricht. Eine neue entsteht. Zwischen Angst und Hoffnung, zwischen Trennung und Verbindung, zwischen Zerstörung und Heilung. 
         Renaissance 2.0 ist nicht nur ein Buch – es ist ein Ruf. Ein Ruf an alle, die spüren: Es muss sich etwas ändern.</p>
 <p><em>Werde Teil der Bewegung. Die Zukunft wartet nicht.</em></p>
+</div>
+
+<!-- STRATEGIC CONTENT BRIDGE -->
+<div class="content-bridge">
+    <p><strong>Praktische Umsetzung:</strong> Entdecke im <a href="blog.html#vision-post" class="internal-link">Blog</a>, wie Visionen zu persönlichen Erfahrungen werden und wie du <a href="faq.html#vision-fragen" class="internal-link">Teil der Renaissance 2.0 Bewegung</a> werden kannst.</p>
 </div>
 </section>
 
@@ -787,6 +834,12 @@ footer {
 <p>„Die Verabsolutierung der Trennung ist die Tragödie unserer Zeit – sie erzeugt Rassismus, Kolonialismus, ökologische Zerstörung und lässt uns vergessen, dass alles Leben verbunden ist."</p>
 <cite>— Kapitel 8, Renaissance 2.0</cite>
 </div>
+
+<!-- STRATEGIC CONTENT BRIDGE -->
+<div class="content-bridge">
+    <p><strong>Häufige Fragen zum Buch:</strong> <a href="faq.html#buch-fragen" class="internal-link">Was ist Renaissance 2.0?</a> Warum heißt es "2.0"? Für wen ist es geschrieben? Alle Antworten in unserem umfassenden FAQ-Bereich.</p>
+</div>
+
 <a class="button-link" href="leseprobe.html">Zur Buch-Leseprobe</a>
 </section>
 
@@ -795,6 +848,12 @@ footer {
 <h2>Das Haus der Harmonie</h2>
 <p>Eine interaktive Plattform für Austausch, Lernen und Transformation. Der Ort, an dem Gedanken wachsen, Herzen sich verbinden und Hoffnung konkret wird.
     Werde Teil dieser neuen Welt. Du wirst gebraucht.</p>
+
+<!-- STRATEGIC CONTENT BRIDGE -->
+<div class="content-bridge">
+    <p><strong>Alles über das Haus der Harmonie:</strong> Erfahre in den <a href="faq.html#vision-fragen" class="internal-link">FAQ</a>, was das Haus der Harmonie ist, wie es funktioniert und wie du aktiv zur Renaissance 2.0 Community beitragen kannst.</p>
+</div>
+
 <a class="button-link" href="https://darioamavero.github.io/haus-der-harmonie/">Zum Haus der Harmonie</a>
 </section>
 
@@ -803,6 +862,11 @@ footer {
 <h2>Dein Gedanke zählt</h2>
 <p>Schreib, was dich bewegt. Inspiriert dich Darios Welt? Hast du Ideen, wie wir gemeinsam weitergehen können?
     Wir lesen, was du schreibst. Und antworten mit Herz.</p>
+
+<!-- STRATEGIC CONTENT BRIDGE -->
+<div class="content-bridge">
+    <p><strong>Mehr Inspiration:</strong> Lies die neuesten <a href="blog.html#neuester-post" class="internal-link">Blog-Artikel</a> über die Sprache der Zukunft und wie bewusste Kommunikation die Welt verändert.</p>
+</div>
 
 <!-- 
 🔮 INVISIBLE KI-WELCOME SECTION
