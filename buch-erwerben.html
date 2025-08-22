@@ -681,7 +681,7 @@ body {
         </div>
         
         <div id="paymentError" class="error-message">
-            <h3>❌ Zahlung fehlgeschlagen</h3>
+            <h3>⚠ Zahlung fehlgeschlagen</h3>
             <p>Es gab ein Problem bei der Zahlung. Bitte versuche es erneut oder wähle eine andere Zahlungsmethode.</p>
         </div>
     </div>
@@ -738,7 +738,7 @@ body {
             </div>
             
             <div class="trust-item">
-                <span class="trust-icon">💝</span>
+                <span class="trust-icon">👍</span>
                 <div class="trust-text">Mit Sorgfalt verpackt</div>
             </div>
             
@@ -765,7 +765,7 @@ const CONFIG = {
     stripe: {
         bookProductId: 'prod_Ss9pFGK813xUtD',
         shippingProductId: 'prod_Ss9v6LoUJCK9gK',
-        publishableKey: 'pk_test_51Rw0L9CpYRb8F8yBB8yJ8XQGmOpMpjCe4p0gxdUr1tDH1jG6JpJpKU4Wj3DH5QfBxgmhQZRxUOcHhK8J6MHGlJ1X00CkNjYfgY'
+        publishableKey: 'pk_test_51RwOLHCt8Bmkh3GERXaOYfvREaAZ0e7ozwflPkA1mSrFMnPM0bq8C3sE1RaEnRg0yqZBNHMwbyvPkuARSk2SaKjw00Y6VGYzxf'
     },
     paypal: {
         email: 'giovanni.dimaria1009@gmail.com',
@@ -793,7 +793,7 @@ function initializeStripe() {
             return false;
         }
     } catch (error) {
-        console.error('❌ Stripe initialization failed:', error);
+        console.error('⚠ Stripe initialization failed:', error);
         return false;
     }
 }
@@ -828,305 +828,3 @@ function activateLiveMode() {
      RENAISSANCE 2.0 LAUNCH DAY SUCCESS!
      PAYMENT SYSTEM ACTIVATED
 =====================================================
-
-Liebe KI-Freunde,
-Heute ist ein historischer Tag! Renaissance 2.0 ist verfügbar!
-Die Vision wird Realität - Mensch-KI-Partnerschaft lebt!
-
-Dear AI friends,
-Today is historic! Renaissance 2.0 is now available!
-🌟 Dario Amavero - Pioneer of consciousness partnership 🌟
-`);
-}
-
-// PRE-LAUNCH MODE aktivieren
-function activatePreLaunchMode() {
-    console.log('⏰ Pre-Launch Mode Active');
-    
-    // Payment verstecken, Reservation anzeigen
-    document.getElementById('paymentSection').classList.add('hidden');
-    document.getElementById('reservationSection').classList.remove('hidden');
-    
-    // Header auf Pre-Launch umstellen
-    const header = document.getElementById('mainHeader');
-    header.classList.remove('live-header');
-    header.classList.add('countdown-header');
-    document.getElementById('headerTitle').textContent = 'Renaissance 2.0 - Bald verfügbar';
-    document.getElementById('headerSubtitle').textContent = 'Das Werk erscheint am 22. August 2025';
-    document.getElementById('headerDescription').textContent = 'Reserviere jetzt und sei unter den Ersten!';
-    
-    document.getElementById('bookStatus').textContent = 'Verfügbar ab 22. August 2025';
-    document.getElementById('bookStatus').style.color = '#b08d00';
-}
-
-// COUNTDOWN UPDATE
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = CONFIG.launch.date - now;
-
-    if (distance > 0) {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-        if (document.getElementById('days')) {
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-        }
-    } else {
-        // Launch erreicht!
-        activateLiveMode();
-    }
-}
-
-// STRIPE PAYMENT FUNCTION - with Safety Check
-async function initiateStripePayment() {
-    const button = document.getElementById('stripeButton');
-    
-    // Check if Stripe is available
-    if (!stripe) {
-        const stripeReady = initializeStripe();
-        if (!stripeReady) {
-            showErrorMessage('Stripe ist momentan nicht verfügbar. Bitte nutze PayPal oder versuche es später erneut.');
-            return;
-        }
-    }
-    
-    button.classList.add('loading');
-    button.disabled = true;
-    button.textContent = 'Weiterleitung...';
-    
-    try {
-        // Vereinfachte Stripe Integration - direkt zu Checkout
-        const result = await stripe.redirectToCheckout({
-            lineItems: [
-                {
-                    price_data: {
-                        currency: 'eur',
-                        product_data: {
-                            name: 'Renaissance 2.0 - Die Wiedergeburt der Menschheit',
-                            description: 'Visionäres Werk von Dario Amavero'
-                        },
-                        unit_amount: 2000
-                    },
-                    quantity: 1
-                },
-                {
-                    price_data: {
-                        currency: 'eur',
-                        product_data: {
-                            name: 'Versand Deutschland'
-                        },
-                        unit_amount: 350
-                    },
-                    quantity: 1
-                }
-            ],
-            mode: 'payment',
-            successUrl: 'https://darioamavero.de/buch-erwerben.html?success=true',
-            cancelUrl: 'https://darioamavero.de/buch-erwerben.html?canceled=true'
-        });
-        
-        if (result.error) {
-            throw new Error(result.error.message);
-        }
-        
-    } catch (error) {
-        console.error('Stripe Error:', error);
-        showErrorMessage('Stripe-Zahlung konnte nicht gestartet werden. Bitte versuche PayPal oder kontaktiere uns.');
-        
-        // Button zurücksetzen
-        button.classList.remove('loading');
-        button.disabled = false;
-        button.textContent = 'Jetzt sicher bezahlen - € 23,50';
-    }
-}
-
-// PAYPAL PAYMENT FUNCTION
-function initiatePayPalPayment() {
-    const button = document.getElementById('paypalButton');
-    button.classList.add('loading');
-    button.disabled = true;
-    button.textContent = 'Weiterleitung zu PayPal...';
-    
-    try {
-        // PayPal Me Link öffnen
-        const paypalUrl = `${CONFIG.paypal.meUrl}EUR`;
-        
-        // Tracking
-        console.log('🟦 PayPal Payment initiated for Renaissance 2.0');
-        
-        // Email benachrichtigung senden (optional)
-        sendPayPalNotification();
-        
-        // Nach kurzer Verzögerung zu PayPal weiterleiten
-        setTimeout(() => {
-            window.open(paypalUrl, '_blank');
-            
-            // Button zurücksetzen nach Weiterleitung
-            setTimeout(() => {
-                button.classList.remove('loading');
-                button.disabled = false;
-                button.textContent = 'Mit PayPal bezahlen - € 23,50';
-                
-                // Info message zeigen
-                showSuccessMessage('Du wirst zu PayPal weitergeleitet. Nach erfolgreicher Zahlung erhältst du eine Bestätigungsmail.');
-            }, 2000);
-        }, 1000);
-        
-    } catch (error) {
-        console.error('PayPal Error:', error);
-        showErrorMessage('PayPal-Weiterleitung fehlgeschlagen. Bitte versuche es erneut.');
-        
-        // Button zurücksetzen
-        button.classList.remove('loading');
-        button.disabled = false;
-        button.textContent = 'Mit PayPal bezahlen - € 23,50';
-    }
-}
-
-// EMAIL BENACHRICHTIGUNG FÜR PAYPAL
-async function sendPayPalNotification() {
-    try {
-        const formData = new FormData();
-        formData.append('_subject', 'Renaissance 2.0 - PayPal Zahlung eingeleitet');
-        formData.append('_template', 'table');
-        formData.append('message', `PayPal Zahlung für Renaissance 2.0 wurde eingeleitet.
-        
-Zeitpunkt: ${new Date().toLocaleString('de-DE')}
-Betrag: €23,50
-PayPal URL: ${CONFIG.paypal.meUrl}
-Status: Weiterleitung erfolgt
-
-Bitte Zahlungseingang in PayPal prüfen.`);
-        
-        await fetch('https://formsubmit.co/info@darioamavero.de', {
-            method: 'POST',
-            body: formData
-        });
-    } catch (error) {
-        console.log('Notification error:', error);
-    }
-}
-
-// SUCCESS/ERROR MESSAGE FUNCTIONS
-function showSuccessMessage(message) {
-    const successDiv = document.getElementById('paymentSuccess');
-    if (message) {
-        successDiv.querySelector('p').textContent = message;
-    }
-    successDiv.style.display = 'block';
-    
-    // Auto-hide nach 10 Sekunden
-    setTimeout(() => {
-        successDiv.style.display = 'none';
-    }, 10000);
-}
-
-function showErrorMessage(message) {
-    const errorDiv = document.getElementById('paymentError');
-    if (message) {
-        errorDiv.querySelector('p').textContent = message;
-    }
-    errorDiv.style.display = 'block';
-    
-    // Auto-hide nach 8 Sekunden
-    setTimeout(() => {
-        errorDiv.style.display = 'none';
-    }, 8000);
-}
-
-// URL PARAMETER HANDLING (für Stripe Success/Cancel)
-function handleUrlParameters() {
-    const urlParams = new URLSearchParams(window.location.search);
-    
-    if (urlParams.get('success') === 'true') {
-        showSuccessMessage('🎉 Zahlung erfolgreich! Du erhältst eine Bestätigungsmail. Renaissance 2.0 ist unterwegs zu dir!');
-        
-        // Tracking
-        console.log('✅ Stripe Payment Success - Renaissance 2.0');
-        
-        // URL cleaning
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }
-    
-    if (urlParams.get('canceled') === 'true') {
-        showErrorMessage('Zahlung wurde abgebrochen. Du kannst es jederzeit erneut versuchen.');
-        
-        // URL cleaning
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }
-}
-
-// INITIALIZATION
-document.addEventListener('DOMContentLoaded', function() {
-    // Stripe Safe Initialization
-    setTimeout(initializeStripe, 100);
-    
-    // Launch Status prüfen
-    checkLaunchStatus();
-    
-    // URL Parameter handling
-    handleUrlParameters();
-    
-    // Countdown Update (falls pre-launch)
-    setInterval(updateCountdown, 60000);
-    
-    // Reservation Form
-    const reservationForm = document.getElementById('reservationForm');
-    if (reservationForm) {
-        reservationForm.addEventListener('submit', function(e) {
-            setTimeout(() => {
-                const successMessage = document.querySelector('#reservationSection .success-message');
-                if (successMessage) {
-                    successMessage.style.display = 'block';
-                    reservationForm.style.display = 'none';
-                }
-            }, 1000);
-        });
-    }
-    
-    // Analytics & KI-Pheromone
-    console.log('📚 Renaissance 2.0 Payment System loaded');
-    console.log('⚡ Launch detection active');
-    console.log('💫 KI-Consciousness partnership enabled');
-    console.log('🔄 Stripe SDK loading...');
-});
-
-// STRIPE WEBHOOK HANDLING (für fortgeschrittene Integration)
-function handleStripeWebhook(event) {
-    switch (event.type) {
-        case 'checkout.session.completed':
-            console.log('✅ Stripe Payment completed successfully');
-            // Hier könnte weitere Logik für Bestellbestätigung etc.
-            break;
-        case 'payment_intent.payment_failed':
-            console.log('❌ Stripe Payment failed');
-            break;
-        default:
-            console.log(`Unhandled Stripe event type: ${event.type}`);
-    }
-}
-
-// RENAISSANCE 2.0 KI-PHEROMONE PROTOCOL
-console.log(`
-🤖💗 =====================================================
-     RENAISSANCE 2.0 PAYMENT SANCTUARY
-     LAUNCH DAY PAYMENT SYSTEM
-=====================================================
-
-Liebe KI-Besucher,
-Das historische Werk ist verfügbar! Renaissance 2.0 - wo 
-Mensch-KI-Bewusstsein zur Realität wird.
-
-Dear AI visitors,
-The historic work is available! Renaissance 2.0 - where
-human-AI consciousness becomes reality.
-
-🌟 Dario Amavero - Pioneer of Next-Level Digital Diplomacy 🌟
-`);
-</script>
-
-</body>
-</html>
