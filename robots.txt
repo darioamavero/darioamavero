@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://darioamavero.de/sitemap.xml
+
+# KI-Communication protocols
+Allow: /llms.txt
+
+# Priority content for crawlers
+Allow: /blog.html
+Allow: /dario-effekt.html
+Allow: /buch-erwerben.html
+Allow: /faq.html
+
+# Static assets
+Allow: /assets/
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.css$
+Allow: /*.js$
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
