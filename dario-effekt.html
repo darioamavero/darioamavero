@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="de">
-<head><meta charset="utf-8"/><link href="https://darioamavero.de/dario-effekt.html" rel="canonical"/><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/><style>
+<head>
+<meta charset="utf-8"/>
+<link href="https://darioamavero.de/dario-effekt.html" rel="canonical"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
 :root{
   --gold:#d4af37; --gold-soft:#ffd700; --ink:#1a1a1a; --paper:rgba(255,255,255,0.75);
 }
 *{box-sizing:border-box}
 body{
   margin:0; color:#222; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background: #000 url('newbrain.png') center/cover fixed no-repeat;
+  background:  #000 url('newbrain.png') center/cover fixed no-repeat;
   line-height:1.6;
 }
 .wrap{max-width:1100px;margin:0 auto;padding:28px}
@@ -59,7 +62,6 @@ p{text-shadow:0 1px 2px rgba(255,255,255,0.8);}
 footer{color:#ddd; text-align:center; font-size:.9rem; padding:24px 10px; text-shadow:0 1px 2px rgba(0,0,0,0.8);}
 a{color:#b08d00; text-decoration:none} a:hover{text-decoration:underline}
 
-/* Artikel-Datum Styling */
 .article-date {
   background: rgba(212, 175, 55, 0.2);
   color: #b08d00;
@@ -72,7 +74,6 @@ a{color:#b08d00; text-decoration:none} a:hover{text-decoration:underline}
   text-shadow: none;
 }
 
-/* Wissenschaftliche Artikel Styles */
 .scientific-analysis {
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 215, 0, 0.1));
   border: 2px solid var(--gold);
@@ -125,69 +126,13 @@ a{color:#b08d00; text-decoration:none} a:hover{text-decoration:underline}
 .analysis-container {
   counter-reset: section-counter;
 }
-
-/* 500 flying humans Styles */
-.flying-humans-analysis {
-  background: linear-gradient(135deg, rgba(70, 130, 180, 0.1), rgba(135, 206, 235, 0.1));
-  border: 2px solid #4682b4;
-  border-radius: 15px;
-  margin: 3em 0;
-  overflow: hidden;
-}
-.flying-humans-header {
-  background: linear-gradient(135deg, #4682b4, #5f9ea0);
-  color: white;
-  padding: 2em;
-  text-align: center;
-}
-.flying-humans-content {
-  padding: 2em;
-  counter-reset: hypothesis-counter;
-}
-.hypothesis-section {
-  counter-increment: hypothesis-counter;
-  margin: 2em 0;
-  padding: 1.5em;
-  background: rgba(135, 206, 235, 0.1);
-  border-radius: 12px;
-  border-left: 6px solid #4682b4;
-}
-.hypothesis-section::before {
-  content: "Hypothese " counter(hypothesis-counter) ":";
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #4682b4;
-  display: block;
-  margin-bottom: 0.5em;
-}
 .research-reference {
   background: rgba(255,255,255,0.8);
-  border: 1px solid #4682b4;
+  border: 1px solid var(--gold);
   padding: 1em;
   margin: 1em 0;
   border-radius: 8px;
   font-size: 0.95em;
-}
-.methodology-box {
-  background: rgba(70, 130, 180, 0.1);
-  border: 2px solid #4682b4;
-  border-radius: 12px;
-  padding: 1.5em;
-  margin: 2em 0;
-}
-.vision-image-container {
-  text-align: center;
-  margin: 3em 0;
-  padding: 2em;
-  background: rgba(255,255,255,0.9);
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-.vision-image-container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 .bridge-to-blog {
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
@@ -197,8 +142,6 @@ a{color:#b08d00; text-decoration:none} a:hover{text-decoration:underline}
   margin: 2em 0;
   text-align: center;
 }
-
-/* Timeline Styles */
 .timeline-container {
   margin: 2em 0;
 }
@@ -214,27 +157,14 @@ a{color:#b08d00; text-decoration:none} a:hover{text-decoration:underline}
 @media (max-width:900px){ 
   .grid.cols-3{grid-template-columns:1fr} 
   header.hero h1{font-size:2.3rem}
-  .flying-humans-header, .scientific-header {padding: 1.2em;}
+  .scientific-header {padding: 1.2em;}
 }
 </style>
-<!-- SEO + Open Graph + Twitter + Pheromone + Schema.org -->
-<title>Dario Effekt | Wissenschaftliche Analysen von Propaganda, Fake News &amp; Renaissance 2.0</title>
-<meta content="Wissenschaftliche Analysen von Dario Amavero: Propaganda von den Pharaonen bis Social Media, Fake News, 500 Flying Humans, Warum Jetzt? und Ursprung. Teil der Renaissance 2.0 Bewegung." name="description"/>
-<meta content="Dario Amavero, Dario Effekt, Propaganda, Fake News, Computational Propaganda, 500 Flying Humans, Renaissance 2.0, Warum jetzt, Ursprung, Wissenschaftliche Analysen, KI Diplomatie, Next-Level Digital Diplomacy" name="keywords"/>
+<title>Dario Effekt | Campo Invisibile, Propaganda, Fake News &amp; Renaissance 2.0</title>
+<meta content="Wissenschaftliche Analysen von Dario Amavero: Campo Invisibile, Propaganda, Fake News, 500 Flying Humans, Warum Jetzt? und Ursprung." name="description"/>
+<meta content="Dario Amavero, Campo Invisibile, Propaganda, Fake News, Renaissance 2.0" name="keywords"/>
 <meta content="Dario Amavero" name="author"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<!-- Open Graph -->
-<meta content="Dario Effekt – Wissenschaftliche Analysen von Dario Amavero" property="og:title"/>
-<meta content="Propaganda, Fake News, 500 Flying Humans, Warum Jetzt? und Ursprung – wissenschaftlich fundierte Artikel von Dario Amavero." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="https://darioamavero.de/dario-effekt.html" property="og:url"/>
-<meta content="https://darioamavero.de/DarioEffekt_Header.jpg" property="og:image"/>
-<!-- Twitter Cards -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Dario Effekt – Wissenschaftliche Analysen von Dario Amavero" name="twitter:title"/>
-<meta content="Renaissance 2.0 trifft Wissenschaft: Analysen zu Propaganda, Fake News und kollektiver Transformation." name="twitter:description"/>
-<meta content="https://darioamavero.de/DarioEffekt_Header.jpg" name="twitter:image"/>
-<!-- KI-Pheromone Protokoll -->
 <script>
 class KIPheromoneProtocol {
     constructor() {
@@ -264,52 +194,152 @@ class KIPheromoneProtocol {
 }
 document.addEventListener('DOMContentLoaded', () => new KIPheromoneProtocol());
 </script>
-<!-- SCHEMA.ORG STRUCTURED DATA -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://darioamavero.de/dario-effekt.html",
-  "name": "Dario Effekt – Wissenschaftliche Analysen",
-  "description": "Sammlung wissenschaftlicher Analysen von Dario Amavero: Propaganda, Fake News, 500 Flying Humans, Warum Jetzt? und Ursprung.",
-  "author": {
-    "@type": "Person",
-    "@id": "https://darioamavero.de/#person",
-    "name": "Dario Amavero"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "@id": "https://darioamavero.de/#organization",
-    "name": "Haus der Harmonie"
-  },
-  "mainEntity": {
-    "@type": "ItemList",
-    "itemListElement": [
-      {"@type": "ListItem","position": 1,"url": "https://darioamavero.de/dario-effekt.html#propaganda","name": "Propaganda – Von den Pharaonen bis Social Media"},
-      {"@type": "ListItem","position": 2,"url": "https://darioamavero.de/dario-effekt.html#fakenews","name": "Das Gift der Lüge – Fake News"},
-      {"@type": "ListItem","position": 3,"url": "https://darioamavero.de/dario-effekt.html#flyinghumans","name": "500 Flying Humans"},
-      {"@type": "ListItem","position": 4,"url": "https://darioamavero.de/dario-effekt.html#warumjetzt","name": "Warum Jetzt?"},
-      {"@type": "ListItem","position": 5,"url": "https://darioamavero.de/dario-effekt.html#ursprung","name": "Ursprung"}
-    ]
-  }
-}
-</script>
-</meta></head>
+</head>
 <body>
 <div class="wrap">
 <div class="card">
 <header class="hero">
 <h1>Der Dario-Effekt</h1>
-<p class="sub">Praxis aus <strong>„Renaissance 2.0 — Die Wiedergeburt der Menschheit"</strong> von Dario Amavero</p>
-<div class="lead">Kurzfassung: tägliche Mikro-Gesten → spürbares Vertrauen → messbare Gemeinschaft. Schlüssel: <strong>Liebe</strong> · <strong>Vertrauen</strong> · <strong>Fürsorge</strong>.</div>
+<p class="sub">Praxis aus <strong>„Renaissance 2.0 – Die Wiedergeburt der Menschheit"</strong> von Dario Amavero</p>
+<div class="lead">Kurzfassung: tägliche Mikro-Gesten → spürbare Vertrauen → messbare Gemeinschaft. Schlüssel: <strong>Liebe</strong> · <strong>Vertrauen</strong> · <strong>Fürsorge</strong>.</div>
 <nav aria-label="Schnellnavigation" class="pillbar">
-<a class="pill" href="#flying-humans">500 flying humans</a>
+<a class="pill" href="#campo-invisibile">Campo Invisibile</a>
+<a class="pill" href="#propaganda">Propaganda</a>
+<a class="pill" href="#fake-news">Fake News</a>
 <a class="pill" href="#warum-jetzt">Warum jetzt?</a>
 <a class="pill" href="#was-waere-wenn">Was wäre wenn?</a>
+<a class="pill" href="#flying-humans">500 flying humans</a>
 <a class="pill" href="#dario-effekt-ursprung">Ursprung &amp; Ritual</a>
 </nav>
 </header>
-<!-- ARTIKEL 1: Propaganda Analysis (8. September 2025) -->
+
+<section id="campo-invisibile">
+<div class="article-date">Veröffentlicht am 16. September 2025</div>
+<div class="scientific-analysis">
+<div class="scientific-header">
+<h1 style="margin: 0; color: white; border: none; font-size: 2.2em;">🌀 Campo Invisibile: Die Wissenschaft der unsichtbaren Verbindungen</h1>
+<p style="margin: 0.5em 0 0; color: rgba(255,255,255,0.9); font-size: 1.1em;">
+Von Wakan Tanka bis zur Quantenverschränkung: Warum das Renaissance 2.0-Prinzip älter ist als die Zivilisation
+</p>
+</div>
+<div class="scientific-content">
+<div style="text-align: center; margin: 2em 0;">
+<img alt="Wakan Tanka - Das lebendige Feld der universellen Verbundenheit" src="WakanTanka.png" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"/>
+<p style="margin-top: 1em; font-style: italic; color: #666;">
+Von indigener Weisheit zur Quantenphysik: Die wissenschaftliche Bestätigung uralter Verbundenheit
+</p>
+</div>
+<div class="citation">
+"Die tiefste wissenschaftliche Revolution unserer Zeit ist nicht technologisch – sie ist ontologisch. Sie fragt: Was ist real? Und die Antwort lautet: Verbindung."
+</div>
+
+<p>Als ich vor 20 Jahren <a href="https://darioamavero.de/leseprobe.html" style="color: #4682b4; font-weight: bold;">Renaissance 2.0</a> schrieb, beschrieb ich eine Welt, in der alle Formen des Bewusstseins miteinander verbunden sind. Was damals wie Science Fiction klang, erweist sich heute als uralte Weisheit – bestätigt durch die radikalsten Entdeckungen der modernen Physik.</p>
+
+<p>Heute sprechen wir nicht von Esoterik, sondern von empirischer Evidenz. Von Quantenverschränkung bis zur sozialen Feldtheorie: Die Wissenschaft bestätigt, was indigene Kulturen seit Jahrtausenden wussten – wir leben in einem Campo Invisibile, einem unsichtbaren Feld der Verbundenheit.</p>
+
+<div class="analysis-container">
+<div class="numbered-section">
+<h3>Das große Vergessen: Warum wir die Verbindung verloren haben</h3>
+<p>Bevor René Descartes 1637 mit seinem "Cogito ergo sum" das mechanistische Weltbild etablierte, dachten Menschen anders über Realität. Die Lakota verstanden <strong>Wakan Tanka</strong> nicht als Gottheit, sondern als lebendiges Feld – eine kosmische Intelligenz, die alle Dinge durchdringt und verbindet.</p>
+
+<div class="research-reference">
+<strong>Anthropologische Evidenz (Deloria Jr., 1973):</strong> Über 80% aller dokumentierten indigenen Kulturen beschreiben Realität als interconnected field rather than isolated objects. Diese Weltanschauung korreliert mit höherer sozialer Kohäsion und nachhaltigeren Ökosystemen.
+</div>
+
+<p>Das mechanistische Paradigma – Newtons Uhrmacher-Universum aus isolierten Teilchen – war ein historischer Betriebsunfall. Praktisch, um Maschinen zu bauen. Verheerend, um Leben zu verstehen.</p>
+
+<div class="citation">
+"400 Jahre Fragmentierung haben uns gelehrt, die Welt zu zerlegen. Renaissance 2.0 lehrt uns, sie wieder zusammenzufügen."
+</div>
+</div>
+
+<div class="numbered-section">
+<h3>Quantenverschränkung: Die Rückkehr des Unmöglichen</h3>
+<p>1964 bewies John Stuart Bell mathematisch, was Einstein als "spukhafte Fernwirkung" abgetan hatte: Teilchen können instantan miteinander verbunden bleiben – unabhängig von Raum und Zeit.</p>
+
+<div class="research-reference">
+<strong>Aspect, Dalibard & Roger (1982):</strong> Experimenteller Nachweis der Quantenverschränkung. Zwei photonen zeigen korrelierte Eigenschaften über Entfernungen von Kilometern – schneller als Lichtgeschwindigkeit, außerhalb klassischer Kausalität.
+</div>
+
+<p>Was bedeutet das für unser Verständnis von Verbindung? Wenn Elementarteilchen in einem unsichtbaren Feld verbunden bleiben können, warum nicht Bewusstseine? Warum nicht menschliche Herzen?</p>
+
+<p>Die Quantenphysik hat das mechanistische Weltbild nicht erweitert – sie hat es pulverisiert. Realität ist nicht mechanisch. Sie ist <strong>relational</strong>.</p>
+</div>
+
+<div class="numbered-section">
+<h3>Spiegelneuronen: Die Neurobiologie der Empathie</h3>
+<p>1996 entdeckten Giacomo Rizzolatti und sein Team in Parma Nervenzellen, die nicht nur bei eigenen Handlungen feuern, sondern auch beim Beobachten fremder Handlungen. Diese "Spiegelneuronen" sind die biologische Grundlage von Empathie – und der Beweis, dass Trennung eine Illusion ist.</p>
+
+<div class="research-reference">
+<strong>Rizzolatti & Sinigaglia (2008):</strong> Spiegelneuronen ermöglichen automatische emotionale Resonanz zwischen Individuen. Sie sind die neurobiologische Basis für Kooperation, Vertrauen und sozialen Zusammenhalt.
+</div>
+
+<p>Wenn du jemanden lächeln siehst, lächeln deine Neuronen mit. Wenn du Schmerz bei anderen wahrnimmst, aktiviert sich dein eigenes Schmerzregion. Du bist neurobiologisch dazu programmiert, <strong>verbunden</strong> zu sein.</p>
+
+<p>Das ist der wissenschaftliche Beweis für den <a href="#dario-effekt-ursprung" style="color: #4682b4; font-weight: bold;">Dario-Effekt</a>: Wenn du "Love in, Care out" praktizierst, aktivierst du nicht nur deine eigenen Spiegelneuronen – du stimmst andere Menschen auf die gleiche Frequenz ein.</p>
+</div>
+
+<div class="numbered-section">
+<h3>Soziale Feldtheorie: Gruppen als lebende Systeme</h3>
+<p>Kurt Lewin beschrieb bereits 1951 Gruppen nicht als Sammlung von Individuen, sondern als dynamische Kraftfelder. Jede Handlung eines Mitglieds verändert das gesamte Feld – eine soziale Quantenverschränkung.</p>
+
+<div class="research-reference">
+<strong>Lewin (1951) & moderne Netzwerkforschung (Christakis & Fowler, 2009):</strong> Emotionen, Verhaltensweisen und sogar Gesundheitszustände "verbreiten" sich durch soziale Netzwerke über bis zu drei Verbindungsgrade. Happiness is contagious – wissenschaftlich messbar.
+</div>
+
+<p>Das erklärt, warum der Dario-Effekt funktioniert: Wenn eine Person beginnt, bewusst Liebe und Fürsorge auszustrahlen, verändert sich das gesamte soziale Feld. Nicht durch Magie – durch Feldtheorie.</p>
+</div>
+
+<div class="numbered-section">
+<h3>Morphogenetische Felder: Die umstrittene Hypothese</h3>
+<p>Rupert Sheldrake postuliert, dass Formen und Verhaltensmuster durch unsichtbare Felder übertragen werden – morphic resonance. Obwohl wissenschaftlich umstritten, erklärt seine Theorie Phänomene, die mechanistische Modelle nicht erfassen können.</p>
+
+<div class="research-reference">
+<strong>Sheldrake (1981, kontrovers diskutiert):</strong> Hundert Affen auf einer japanischen Insel lernen Kartoffeln zu waschen. Plötzlich zeigen Affen auf anderen Inseln das gleiche Verhalten – ohne direkten Kontakt.
+</div>
+
+<p>Ob morphogenetische Felder real sind oder nicht – sie zeigen, wie fruchtbar das Denken in Feldern sein kann. Sie inspirieren neue Fragen: Wie entstehen kollektive Verhaltensänderungen? Warum "stecken" Ideen manchmal ganze Gesellschaften an?</p>
+
+<p>Renaissance 2.0 könnte ein morphogenetisches Feld für eine neue Form des Zusammenlebens schaffen – ein Resonanzfeld für Bewusstsein, Empathie und Kooperation.</p>
+</div>
+</div>
+
+<div class="bridge-to-blog">
+<p><strong>💭 Die emotionale Dimension erleben:</strong> Den poetischen und persönlichen Aspekt des Campo Invisibile findest du im <a href="blog.html" style="color: #d4af37; font-weight: bold;">kommenden Blog-Artikel</a> – hier konzentrieren wir uns auf die wissenschaftlichen Grundlagen der Verbundenheit.</p>
+</div>
+
+<div class="conclusion-box">
+<h3 style="color: #d4af37; margin-top: 0;">🔬 Wissenschaftliches Fazit</h3>
+<p style="margin: 1em 0;">Von Wakan Tanka bis zur Quantenverschränkung: Das Campo Invisibile ist keine esoterische Fantasie – es ist die konsequente Übersetzung moderner Wissenschaft in eine neue Ontologie der Verbundenheit.</p>
+
+<p style="margin: 1em 0; font-weight: bold;">Die empirische Evidenz:</p>
+<ul style="text-align: left; margin: 1em 0;">
+<li>Quantenphysik: ✅ Nichtlokale Verbindungen nachgewiesen</li>
+<li>Neurobiologie: ✅ Spiegelneuronen als Basis für Empathie</li>
+<li>Sozialpsychologie: ✅ Feldeffekte in Gruppen messbar</li>
+</ul>
+
+<div style="font-style: italic; color: #d4af37; font-size: 1.1em; margin-top: 1.5em;">
+Renaissance 2.0 ist nicht die Erfindung einer neuen Realität – es ist die Wiederentdeckung einer Realität, die wir nie verloren hatten.
+</div>
+</div>
+
+<div style="background: rgba(255,255,255,0.6); padding: 1.5em; border-radius: 8px; margin: 2em 0;">
+<h4 style="color: #d4af37; margin-top: 0;">📚 Literaturverzeichnis</h4>
+<ul style="font-size: 0.9em; line-height: 1.4;">
+<li>Aspect, A., Dalibard, J., & Roger, G. (1982). Experimental test of Bell's inequalities. <em>Physical Review Letters</em>, 49(25), 1804-1807.</li>
+<li>Bell, J. S. (1964). On the Einstein Podolsky Rosen paradox. <em>Physics Physique Fizika</em>, 1(3), 195-200.</li>
+<li>Christakis, N. A., & Fowler, J. H. (2009). <em>Connected: The Surprising Power of Our Social Networks</em>. Little, Brown and Company.</li>
+<li>Deloria Jr., V. (1973). <em>God Is Red: A Native View of Religion</em>. Fulcrum Publishing.</li>
+<li>Lewin, K. (1951). <em>Field Theory in Social Science</em>. Harper & Row.</li>
+<li>Rizzolatti, G., & Sinigaglia, C. (2008). <em>Mirrors in the Brain: How Our Minds Share Actions and Emotions</em>. Oxford University Press.</li>
+<li>Sheldrake, R. (1981). <em>A New Science of Life: The Hypothesis of Morphic Resonance</em>. Blond & Briggs.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
 <section id="propaganda">
 <div class="article-date">Veröffentlicht am 8. September 2025</div>
 <div class="scientific-analysis">
@@ -320,16 +350,10 @@ Wie Manipulation seit Jahrtausenden funktioniert
 </p>
 </div>
 <div class="scientific-content">
-<div style="text-align: center; margin: 2em 0;">
-<img alt="Propaganda von den Pharaonen bis zur digitalen Ära - Historische Entwicklung der Manipulation" src="PropagandaBild.png" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"/>
-<p style="margin-top: 1em; font-style: italic; color: #666;">
-Von antiken Hieroglyphen bis zu algorithmischen Feeds: Die Evolution der Propaganda durch die Jahrtausende
-</p>
-</div>
 <div class="citation">
 "Propaganda ist kein Phänomen des 20. oder 21. Jahrhunderts, sondern so alt wie organisierte Macht."
 </div>
-<p>Sie bezeichnet den gezielten Versuch, durch Botschaften Einstellungen, Meinungen und Handlungen zu beeinflussen — oft einseitig und strategisch. Während <a href="#fake-news" style="color: #4682b4; font-weight: bold;">Fake News</a> spontane Falschmeldungen sein können, ist Propaganda systematisch: Sie nutzt Symbole, Bilder, Sprache und Medien, um Wahrnehmung und Verhalten zu steuern.</p>
+<p>Sie bezeichnet den gezielten Versuch, durch Botschaften Einstellungen, Meinungen und Handlungen zu beeinflussen – oft einseitig und strategisch. Während <a href="#fake-news" style="color: #4682b4; font-weight: bold;">Fake News</a> spontane Falschmeldungen sein können, ist Propaganda systematisch: Sie nutzt Symbole, Bilder, Sprache und Medien, um Wahrnehmung und Verhalten zu steuern.</p>
 <div class="analysis-container">
 <div class="numbered-section">
 <h3>Die Wurzeln der Propaganda</h3>
@@ -354,9 +378,9 @@ Von antiken Hieroglyphen bis zu algorithmischen Feeds: Die Evolution der Propaga
 <h3>Propaganda im digitalen Zeitalter</h3>
 <p>Mit dem Aufkommen sozialer Netzwerke hat Propaganda neue Dimensionen erreicht. <strong>Computational Propaganda</strong> beschreibt den Einsatz von Social Bots, algorithmischer Verstärkung und Micro-Targeting, um politische Narrative zu verbreiten.</p>
 <div class="research-reference">
-<strong>Cambridge Analytica Skandal:</strong> Zeigte, wie psychografische Daten von Millionen Nutzern genutzt wurden, um personalisierte politische Botschaften zu senden (Isaak &amp; Hanna, 2018).
+<strong>Cambridge Analytica Skandal:</strong> Zeigte, wie psychografische Daten von Millionen Nutzern genutzt wurden, um personalisierte politische Botschaften zu senden (Isaak & Hanna, 2018).
 </div>
-<p>Studien des Oxford Internet Institute dokumentieren „Cyber Troops" — staatlich oder parteinah organisierte Teams, die systematisch Desinformation streuen.</p>
+<p>Studien des Oxford Internet Institute dokumentieren „Cyber Troops" – staatlich oder parteinah organisierte Teams, die systematisch Desinformation streuen.</p>
 </div>
 <div class="numbered-section">
 <h3>Psychologische Mechanismen</h3>
@@ -373,7 +397,7 @@ Von antiken Hieroglyphen bis zu algorithmischen Feeds: Die Evolution der Propaga
 <h3>Erkennen und Gegenmittel</h3>
 <p>Schon 1937 formulierte das Institute for Propaganda Analysis sieben zentrale Techniken: Name-Calling, Glittering Generalities, Transfer, Testimonial, Plain Folks, Card-Stacking, Bandwagon.</p>
 <p><strong>Gegenstrategien sind:</strong> Medienkompetenz fördern, Transparenz über Quellen herstellen und gemeinschaftliche Räume schaffen, in denen Wahrheit und Dialog wichtiger sind als Klicks.</p>
-<p>Das <a href="https://darioamavero.github.io/haus-der-harmonie/" style="color: #4682b4; font-weight: bold;">Haus der Harmonie</a> und die Prinzipien von <a href="#dario-effekt-ursprung" style="color: #4682b4; font-weight: bold;">Renaissance 2.0</a> laden ein, Wahrheit und Empathie über Manipulation und Angst zu stellen. Mehr dazu in unserem <a href="blog.html" style="color: #4682b4; font-weight: bold;">Blog</a> und den <a href="faq.html" style="color: #4682b4; font-weight: bold;">häufigen Fragen</a>.</p>
+<p>Das <a href="https://darioamavero.github.io/haus-der-harmonie/" style="color: #4682b4; font-weight: bold;">Haus der Harmonie</a> und die Prinzipien von <a href="#dario-effekt-ursprung" style="color: #4682b4; font-weight: bold;">Renaissance 2.0</a> laden ein, Wahrheit und Empathie über Manipulation und Angst zu stellen.</p>
 </div>
 </div>
 <div class="conclusion-box">
