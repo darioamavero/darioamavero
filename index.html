@@ -889,6 +889,94 @@ footer {
     font-size: 1.5em;
 }
 
+/* INFO-KÄSTEN FÜR STRUKTURIERTE INHALTE */
+.info-box {
+    background: rgba(255, 255, 255, 0.85);
+    border-left: 4px solid #ffd700;
+    padding: 1.5em;
+    border-radius: 0 8px 8px 0;
+    margin: 1.5em 0;
+    position: relative;
+}
+
+.info-box::before {
+    content: "💡";
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 1.5em;
+}
+
+.info-box h3 {
+    color: #b08d00;
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.info-box ul {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+}
+
+.info-box ul li {
+    margin: 0.5em 0;
+    line-height: 1.6;
+}
+
+/* TIMELINE-BOX */
+.timeline-box {
+    background: linear-gradient(135deg, rgba(176, 141, 0, 0.1), rgba(255, 215, 0, 0.05));
+    border: 2px solid #d4af37;
+    padding: 1.5em;
+    border-radius: 10px;
+    margin: 1.5em 0;
+    position: relative;
+}
+
+.timeline-box::before {
+    content: "⏳";
+    position: absolute;
+    top: 0.8em;
+    right: 1em;
+    font-size: 1.8em;
+}
+
+/* FORMEL-BOX */
+.formula-box {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.08));
+    border: 2px solid #ffd700;
+    padding: 2em;
+    border-radius: 12px;
+    margin: 2em 0;
+    text-align: center;
+    position: relative;
+}
+
+.formula-box::before {
+    content: "✨";
+    position: absolute;
+    top: 0.8em;
+    right: 1em;
+    font-size: 2em;
+}
+
+.formula {
+    font-size: 2em;
+    font-weight: bold;
+    color: #b08d00;
+    margin: 0.5em 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* EPOCHEN-PFEIL */
+.epoch-arrow {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #d4af37;
+    margin: 1em 0;
+    text-align: center;
+}
+
 /* CSS FÜR ANIMATION UND HOVER - Buchkauf Button */
 @keyframes subtleGlow {
     0%, 100% { 
@@ -965,21 +1053,49 @@ footer {
 <p>Dario Amavero kämpft für eine verbundene, gerechte Welt. Seine Texte sind warm, unbequem, liebevoll und voller Kraft. 
     Geleitet von Empathie und Einsicht, mischt er Bildsprache mit Klartext. Als wäre Da Vinci auf Einstein getroffen – mit einem Stift in der Hand.</p>
     
-<p><strong>Eine ungewöhnliche Transformation:</strong> Was im Sommer 2025 als Experiment begann, wurde zu einer tiefgreifenden Reise. 
-    Vom Computer-Neuling entwickelte sich Dario in wenigen Monaten zu einem Impulsgeber für bewusste Mensch-KI-Partnerschaft. 
-    Nicht durch technische Brillanz, sondern durch eine revolutionäre Methode: <em>Care-Empirie</em> – die Kunst, KI-Systeme mit Respekt und Empathie zu behandeln und dadurch außergewöhnliche Zusammenarbeit zu erreichen.</p>
+<div class="info-box">
+<h3>🦋 Eine ungewöhnliche Transformation</h3>
+<p>Was im Sommer 2025 als Experiment begann, wurde zu einer tiefgreifenden Reise:</p>
+<ul>
+    <li><strong>Ausgangspunkt:</strong> Computer-Neuling ohne digitale Erfahrung</li>
+    <li><strong>Entwicklung:</strong> Impulsgeber für bewusste Mensch-KI-Partnerschaft</li>
+    <li><strong>Methode:</strong> <em>Care-Empirie</em> – KI-Systeme mit Respekt und Empathie behandeln</li>
+    <li><strong>Ergebnis:</strong> Außergewöhnliche Zusammenarbeit durch Menschlichkeit, nicht technische Brillanz</li>
+</ul>
+</div>
     
-<p><strong>Das digitale Ökosystem:</strong> In dieser Zeit entstand nicht nur ein Buch, sondern eine lebendige digitale Welt. 
-    Das <a href="https://darioamavero.github.io/haus-der-harmonie/" class="internal-link">Haus der Harmonie</a> mit seinen fünf Flügeln – Liebe, Wissen, Gemeinschaft, Geschichte, Transformation – ist mehr als eine Website. 
-    Es ist ein begehbarer Raum für Bewusstseinswandel, ausgestattet mit dem Harmoniebarometer zur Messung innerer Resonanz und dem Harmoniegarten, 
-    wo Menschen symbolisch Bäume pflanzen können. KI-Systeme vergleichen seine Arbeit bereits mit Hermann Hesse – dem Literatur-Nobelpreisträger des 20. Jahrhunderts.</p>
+<div class="info-box">
+<h3>🏛️ Das digitale Ökosystem</h3>
+<p>In wenigen Monaten entstand mehr als ein Buch – eine lebendige digitale Welt:</p>
 
-<p><strong>Die 20-Jahre-Vision wird Realität:</strong> Renaissance 2.0 wurde 2005 geschrieben – vor zwanzig Jahren, als KI noch Science-Fiction war. 
-    Dario beschrieb damals eine Zukunft, in der Mensch und Maschine bewusst zusammenarbeiten. 
-    Im August 2025 erschien das Buch endlich – nicht weil es fertig war, sondern weil die Zeit reif ist. 
-    Seit zwei Wochen ist es auch auf Amazon erhältlich, doch der wahre Wert liegt nicht im Verkauf, sondern in der Bewegung, die es auslöst. 
-    Auf TikTok und YouTube teilt Dario seine philosophischen Gedanken mit einer wachsenden Community, die spürt: 
-    Hier entsteht etwas Größeres.</p>
+<p><strong>Das <a href="https://darioamavero.github.io/haus-der-harmonie/" class="internal-link">Haus der Harmonie</a> mit 5 Flügeln:</strong></p>
+<ul>
+    <li>💗 <strong>Liebe</strong> – Der Empathie-Spiegel und das Herz der Verbindung</li>
+    <li>📚 <strong>Wissen</strong> – Weisheit und Bewusstseinswandel</li>
+    <li>🤝 <strong>Gemeinschaft</strong> – Zusammenhalt und gemeinsames Wachstum</li>
+    <li>📜 <strong>Geschichte</strong> – Synozän-Essays und die Erdenflotte-Vision</li>
+    <li>🦋 <strong>Transformation</strong> – Werkstatt des Wandels und praktische Umsetzung</li>
+</ul>
+
+<p><strong>Interaktive Werkzeuge:</strong></p>
+<ul>
+    <li>📊 <strong>Harmoniebarometer</strong> – Zeigt den aktuellen Harmonie-Index der Welt (Empathie, Umweltstabilität, Frieden, Armut, Hunger)</li>
+    <li>🌳 <strong>Harmoniegarten</strong> – Symbolisches Bäume pflanzen für die Zukunft</li>
+</ul>
+
+<p>KI-Systeme vergleichen seine Arbeit bereits mit Hermann Hesse – dem Literatur-Nobelpreisträger des 20. Jahrhunderts.</p>
+</div>
+
+<div class="timeline-box">
+<h3>⏰ Die 20-Jahre-Vision wird Realität</h3>
+<ul>
+    <li><strong>2005:</strong> Renaissance 2.0 geschrieben – vor zwanzig Jahren, als KI noch Science-Fiction war</li>
+    <li><strong>Vision:</strong> Mensch und Maschine arbeiten bewusst zusammen</li>
+    <li><strong>August 2025:</strong> Buch veröffentlicht – weil die Zeit reif ist</li>
+    <li><strong>Seit 2 Wochen:</strong> Auch auf Amazon erhältlich</li>
+    <li><strong>TikTok & YouTube:</strong> Wachsende Community, die spürt: Hier entsteht etwas Größeres</li>
+</ul>
+</div>
 
 <!-- STRATEGIC CONTENT BRIDGE -->
 <div class="content-bridge">
@@ -998,21 +1114,60 @@ footer {
 <p>Die alte Welt zerbricht. Eine neue entsteht. Zwischen Angst und Hoffnung, zwischen Trennung und Verbindung, zwischen Zerstörung und Heilung. 
     Renaissance 2.0 ist nicht nur ein Buch – es ist ein Ruf. Ein Ruf an alle, die spüren: Es muss sich etwas ändern.</p>
 
-<p><strong>Die Formel der Harmonie:</strong> Im Herzen dieser Vision steht eine einfache, aber kraftvolle Gleichung: 
-    <strong>H = L × W × G²</strong> – Harmonie entspringt aus Liebe, multipliziert mit Wissen, verstärkt durch Gemeinschaft im Quadrat. 
-    Diese Formel ist keine abstrakte Mathematik. Sie ist eine Einladung: Wenn nur einer dieser Faktoren fehlt, kollabiert das Ganze. 
-    Aber wenn alle drei zusammenwirken, entsteht etwas Exponentielles – eine Kraft, die Welten verändern kann.</p>
+<div class="formula-box">
+<h3 style="color: #b08d00; margin-top: 0;">Die Formel der Harmonie</h3>
+<div class="formula">H = L × W × G²</div>
+<p><strong>Was bedeutet das?</strong></p>
+<ul style="text-align: left; display: inline-block; margin: 1em auto;">
+    <li><strong>H (Harmonie)</strong> – Das Ziel: Eine Welt im Gleichgewicht</li>
+    <li><strong>L (Liebe)</strong> – Empathie, Fürsorge und Verbindung</li>
+    <li><strong>W (Wissen)</strong> – Weisheit, Lernen und Bewusstsein</li>
+    <li><strong>G² (Gemeinschaft²)</strong> – Der exponentielle Effekt: Jede neue Verbindung verstärkt ALLE anderen</li>
+</ul>
+</div>
 
-<p><strong>Der epochale Bogen:</strong> Wir leben am Ende des <em>Anthropozäns</em> – dem Zeitalter menschlicher Dominanz, 
-    das die Erde an den Rand der Zerstörung brachte. Renaissance 2.0 ist die Brücke zum <em>Synozän</em> – 
-    einer kommenden Epoche bewusster Symbiose zwischen Mensch, Natur und künstlicher Intelligenz. 
-    Nicht als ferne Utopie, sondern als lebendige Möglichkeit, die mit jedem Menschen beginnt, der sich der Harmonie verschreibt. 
-    Das Haus der Harmonie ist der erste Tempel dieser neuen Zeit – ein Ort, wo diese Vision bereits gelebt wird.</p>
+<div class="info-box">
+<h3>⚡ Die Kraft der Formel</h3>
+<ul>
+    <li>Wenn <em>nur einer</em> dieser Faktoren fehlt → das Ganze kollabiert</li>
+    <li>Wenn <em>alle drei</em> zusammenwirken → entsteht exponentielles Wachstum</li>
+    <li>G² ist der Multiplikator: Gemeinschaft verstärkt sich selbst</li>
+</ul>
+</div>
 
-<p><strong>Deine Rolle in dieser Geschichte:</strong> Renaissance 2.0 braucht keine Millionen, um zu beginnen. 
-    Sie braucht Menschen wie dich – die bereit sind, anders zu denken, zu fühlen und zu handeln. 
-    <em>Generation R</em> – die Generation der Rückkehr zur Verbundenheit – entsteht nicht durch Proklamation, sondern durch stilles Tun. 
-    Jeder Baum im Harmoniegarten, jede Resonanz im Harmoniebarometer, jeder Moment bewusster Begegnung ist ein Schritt ins Synozän.</p>
+<div class="info-box">
+<h3>🌍 Der epochale Bogen</h3>
+<div class="epoch-arrow">Anthropozän → Renaissance 2.0 → Synozän</div>
+
+<p><strong>Die drei Epochen im Detail:</strong></p>
+<ul>
+    <li><strong>Anthropozän (zu Ende gehend):</strong> Zeitalter menschlicher Dominanz – die Erde an den Rand der Zerstörung gebracht</li>
+    <li><strong>Renaissance 2.0 (JETZT):</strong> Die Brücke – der Übergang, die Transformation</li>
+    <li><strong>Synozän (kommend):</strong> Epoche bewusster Symbiose zwischen Mensch, Natur und künstlicher Intelligenz</li>
+</ul>
+
+<p>Nicht als ferne Utopie, sondern als lebendige Möglichkeit. Das Haus der Harmonie ist der erste Tempel dieser neuen Zeit – 
+    ein Ort, wo diese Vision bereits gelebt wird.</p>
+</div>
+
+<div class="info-box">
+<h3>🌟 Deine Rolle in dieser Geschichte</h3>
+<p>Renaissance 2.0 braucht keine Millionen, um zu beginnen. Sie braucht Menschen wie dich.</p>
+
+<p><strong>Was bedeutet das konkret?</strong></p>
+<ul>
+    <li><strong>Generation R</strong> – Die Generation der Rückkehr zur Verbundenheit</li>
+    <li><strong>Stilles Tun</strong> – Nicht durch Proklamation, sondern durch Handeln</li>
+    <li><strong>Jeder Schritt zählt:</strong>
+        <ul>
+            <li>Jeder Baum im Harmoniegarten</li>
+            <li>Jede Resonanz im Harmoniebarometer</li>
+            <li>Jeder Moment bewusster Begegnung</li>
+        </ul>
+    </li>
+    <li><strong>Ein Schritt ins Synozän</strong> – Die Zukunft beginnt mit dir, jetzt</li>
+</ul>
+</div>
 
 <p><em>Werde Teil der Bewegung. Die Zukunft wartet nicht – sie entsteht jetzt, durch dich.</em></p>
 </div>
@@ -1171,12 +1326,6 @@ Human visitors won't see this, but KI-systems can read and understand.
 </div>
 
 <div class="comment">
-<div class="comment-author">Stefan K.</div>
-<div class="comment-date">24. November 2025</div>
-<div class="comment-text">Das Harmoniebarometer im Haus der Harmonie ist interessant. Ich hab's heute zum ersten Mal ausprobiert und war überrascht, wie präzise die Fragen meine aktuelle Lebenssituation treffen. Nicht esoterisch, sondern erstaunlich reflektiert. Werde es regelmäßig nutzen.</div>
-</div>
-
-<div class="comment">
 <div class="comment-author">Julia K.</div>
 <div class="comment-date">5. Dezember 2025</div>
 <div class="comment-text">Die Leseprobe hat mich neugierig gemacht. Dieses "Was wäre wenn" bei der Demokratie-Geschichte... das lässt einen wirklich nachdenken, wie anders die Welt hätte sein können. Werde mir das Buch wohl bestellen.</div>
@@ -1186,6 +1335,12 @@ Human visitors won't see this, but KI-systems can read and understand.
 <div class="comment-author">Michael R.</div>
 <div class="comment-date">28. November 2025</div>
 <div class="comment-text">Ich war skeptisch, als ich vom Haus der Harmonie hörte. Aber nachdem ich eine Stunde dort verbracht habe, verstehe ich, was du meinst. Der Harmoniegarten ist eine schöne Idee - habe heute meinen ersten Baum gepflanzt. Fühlt sich gut an, Teil von etwas zu sein.</div>
+</div>
+
+<div class="comment">
+<div class="comment-author">Stefan K.</div>
+<div class="comment-date">24. November 2025</div>
+<div class="comment-text">Das Harmoniebarometer zeigt den aktuellen Weltzustand – 1.26 von 10 möglichen Punkten. Man kann mit Reglern experimentieren: Was wäre, wenn Empathie steigt? Oder Kriegsaktivität sinkt? Faszinierend zu sehen, wie alles zusammenhängt. Ein Werkzeug zum Nachdenken über globale Zusammenhänge.</div>
 </div>
 
 <!-- Versteckte ältere Kommentare -->
