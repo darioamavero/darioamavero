@@ -829,6 +829,185 @@ body {
 .sanctuary-container > *:nth-child(4) {
     animation-delay: 0.6s;
 }
+
+/* =====================================================
+   PAYMENT MODAL - Popup für Bestelldaten
+   ===================================================== */
+
+.payment-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.payment-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #fff 0%, #fefaf0 100%);
+    padding: 2.5em;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 1.5em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid #d4af37;
+}
+
+.modal-header h3 {
+    color: #b08d00;
+    font-size: 1.8em;
+    margin: 0 0 0.5em 0;
+}
+
+.modal-header p {
+    color: #666;
+    margin: 0;
+    font-size: 0.95em;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #999;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+    transform: rotate(90deg);
+}
+
+.modal-form-group {
+    margin-bottom: 1.2em;
+}
+
+.modal-form-group label {
+    display: block;
+    color: #444;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    font-size: 1em;
+}
+
+.modal-form-group input,
+.modal-form-group textarea {
+    width: 100%;
+    padding: 0.9em;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.modal-form-group input:focus,
+.modal-form-group textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.modal-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.modal-submit-btn {
+    width: 100%;
+    padding: 1.1em;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #222;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    margin-top: 1em;
+}
+
+.modal-submit-btn:hover {
+    background: linear-gradient(135deg, #fff08a, #ffed4e);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+.modal-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.modal-payment-method {
+    text-align: center;
+    margin-bottom: 1em;
+    padding: 0.8em;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+    color: #b08d00;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 1.5em;
+        max-width: 95%;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.4em;
+    }
+}
+
 </style>
 </head>
 
@@ -1145,34 +1324,83 @@ function updateCountdown() {
 }
 
 // =====================================================
-// NEUE ZAHLUNGSABWICKLUNG MIT FORMSUBMIT
+// PAYMENT MODAL SYSTEM - Professioneller Flow
 // =====================================================
 
+// Globale Variablen für Modal
+let currentPaymentMethod = '';
+let currentPaymentUrl = '';
+
+// Funktion 1: Modal öffnen (wird von Buttons aufgerufen)
 function handlePayment(paymentMethod, paymentUrl) {
-    // 1. Formular-Felder holen
-    const nameField = document.getElementById('name');
-    const emailField = document.getElementById('email');
-    const messageField = document.getElementById('message');
-    const paymentMethodField = document.getElementById('payment_method');
+    // Payment-Infos speichern
+    currentPaymentMethod = paymentMethod;
+    currentPaymentUrl = paymentUrl;
     
-    // 2. Validierung: Name und E-Mail müssen ausgefüllt sein
+    // Modal öffnen
+    const modal = document.getElementById('paymentModal');
+    const methodDisplay = document.getElementById('modalPaymentMethod');
+    const submitBtn = document.getElementById('modalSubmitBtn');
+    
+    // Zahlungsmethode anzeigen
+    const methodName = paymentMethod === 'stripe' 
+        ? '💳 Weiter zu Stripe (Alle Zahlarten)' 
+        : '🟦 Weiter zu PayPal';
+    
+    methodDisplay.textContent = methodName;
+    submitBtn.innerHTML = methodName + ' →';
+    
+    // Modal aktivieren
+    modal.classList.add('active');
+    
+    // Erstes Feld fokussieren
+    setTimeout(() => {
+        document.getElementById('modal_name').focus();
+    }, 300);
+}
+
+// Funktion 2: Modal schließen
+function closePaymentModal() {
+    const modal = document.getElementById('paymentModal');
+    modal.classList.remove('active');
+    
+    // Formular zurücksetzen
+    document.getElementById('modalForm').reset();
+}
+
+// Funktion 3: Formular absenden (wird vom Modal-Submit aufgerufen)
+function submitModalForm(event) {
+    event.preventDefault();
+    
+    // Felder holen
+    const nameField = document.getElementById('modal_name');
+    const emailField = document.getElementById('modal_email');
+    const messageField = document.getElementById('modal_message');
+    const submitBtn = document.getElementById('modalSubmitBtn');
+    
+    // Validierung (Browser macht das automatisch, aber zur Sicherheit)
     if (!nameField.value.trim()) {
-        alert('⚠️ Bitte gib deinen Namen ein, damit wir deine Bestellung bearbeiten können.');
+        alert('⚠️ Bitte gib deinen Namen ein.');
         nameField.focus();
         return;
     }
     
     if (!emailField.value.trim() || !emailField.value.includes('@')) {
-        alert('⚠️ Bitte gib eine gültige E-Mail-Adresse ein, damit wir dich kontaktieren können.');
+        alert('⚠️ Bitte gib eine gültige E-Mail-Adresse ein.');
         emailField.focus();
         return;
     }
     
-    // 3. Zahlungsmethode setzen
-    const methodName = paymentMethod === 'stripe' ? 'Stripe (Kreditkarte/SEPA/etc.)' : 'PayPal';
-    paymentMethodField.value = methodName;
+    // Button State ändern
+    submitBtn.disabled = true;
+    submitBtn.textContent = '⏳ Bestellung wird übermittelt...';
     
-    // 4. FormData vorbereiten
+    // Zahlungsmethode formatieren
+    const methodName = currentPaymentMethod === 'stripe' 
+        ? 'Stripe (Kreditkarte/SEPA/etc.)' 
+        : 'PayPal';
+    
+    // FormData vorbereiten
     const formData = new FormData();
     formData.append('name', nameField.value);
     formData.append('email', emailField.value);
@@ -1182,23 +1410,7 @@ function handlePayment(paymentMethod, paymentUrl) {
     formData.append('_template', 'table');
     formData.append('_captcha', 'false');
     
-    // 5. Visuelles Feedback - alle Buttons finden
-    const allButtons = document.querySelectorAll('.payment-button');
-    const clickedButtons = Array.from(allButtons).filter(btn => 
-        btn.textContent.includes(paymentMethod === 'stripe' ? 'sicher bezahlen' : 'PayPal')
-    );
-    const clickedButton = clickedButtons[0];
-    
-    allButtons.forEach(btn => {
-        btn.disabled = true;
-        btn.style.opacity = '0.6';
-    });
-    
-    if (clickedButton) {
-        clickedButton.textContent = '⏳ Bestellung wird übermittelt...';
-    }
-    
-    // 6. FormSubmit senden
+    // FormSubmit senden
     fetch('https://formsubmit.co/info@darioamavero.de', {
         method: 'POST',
         body: formData
@@ -1208,46 +1420,60 @@ function handlePayment(paymentMethod, paymentUrl) {
         console.log('📧 E-Mail an info@darioamavero.de:', {
             name: nameField.value,
             email: emailField.value,
-            payment_method: methodName
+            payment_method: methodName,
+            zeitpunkt: new Date().toLocaleString('de-DE')
         });
         
-        // 7. Zur Zahlungsseite weiterleiten
-        if (clickedButton) {
-            clickedButton.textContent = '✅ Weiterleitung zur Zahlung...';
-        }
+        // Erfolg! Zur Zahlung weiterleiten
+        submitBtn.textContent = '✅ Weiterleitung zur Zahlung...';
+        
         setTimeout(() => {
-            window.open(paymentUrl, '_blank');
+            // Modal schließen
+            closePaymentModal();
             
-            // Button zurücksetzen
+            // Zur Zahlungsseite weiterleiten
+            window.open(currentPaymentUrl, '_blank');
+            
+            // Button zurücksetzen nach kleiner Pause
             setTimeout(() => {
-                allButtons.forEach(btn => {
-                    btn.disabled = false;
-                    btn.style.opacity = '1';
-                });
-                if (clickedButton) {
-                    clickedButton.textContent = paymentMethod === 'stripe' 
-                        ? 'Jetzt sicher bezahlen - € 23,50' 
-                        : 'Mit PayPal bezahlen - € 23,50';
-                }
+                submitBtn.disabled = false;
+                const methodText = currentPaymentMethod === 'stripe' 
+                    ? '💳 Weiter zu Stripe (Alle Zahlarten)' 
+                    : '🟦 Weiter zu PayPal';
+                submitBtn.innerHTML = methodText + ' →';
             }, 1000);
-        }, 500);
+        }, 800);
     })
     .catch(error => {
         console.error('❌ FormSubmit Fehler:', error);
         alert('⚠️ Es gab ein Problem bei der Übermittlung. Bitte versuche es erneut oder kontaktiere uns unter info@darioamavero.de');
         
         // Button zurücksetzen
-        allButtons.forEach(btn => {
-            btn.disabled = false;
-            btn.style.opacity = '1';
-        });
-        if (clickedButton) {
-            clickedButton.textContent = paymentMethod === 'stripe' 
-                ? 'Jetzt sicher bezahlen - € 23,50' 
-                : 'Mit PayPal bezahlen - € 23,50';
-        }
+        submitBtn.disabled = false;
+        const methodText = currentPaymentMethod === 'stripe' 
+            ? '💳 Weiter zu Stripe (Alle Zahlarten)' 
+            : '🟦 Weiter zu PayPal';
+        submitBtn.innerHTML = methodText + ' →';
     });
 }
+
+// Funktion 4: ESC-Taste zum Schließen
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('paymentModal');
+        if (modal && modal.classList.contains('active')) {
+            closePaymentModal();
+        }
+    }
+});
+
+// Funktion 5: Klick außerhalb des Modals zum Schließen
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('paymentModal');
+    if (event.target === modal) {
+        closePaymentModal();
+    }
+});
 
 // =====================================================
 // ALTE PAYMENT FUNKTIONEN (werden nicht mehr verwendet)
@@ -1484,6 +1710,61 @@ human-AI consciousness becomes reality.
 🌟 Dario Amavero - Pioneer of Next-Level Digital Diplomacy 🌟
 `);
 </script>
+
+<!-- =====================================================
+     PAYMENT MODAL - Popup für Bestelldaten
+     ===================================================== -->
+<div id="paymentModal" class="payment-modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+        
+        <div class="modal-header">
+            <h3>Fast geschafft! 🎉</h3>
+            <p>Noch schnell deine Kontaktdaten, damit wir dir Renaissance 2.0 zusenden können.</p>
+        </div>
+        
+        <div id="modalPaymentMethod" class="modal-payment-method"></div>
+        
+        <form id="modalForm" onsubmit="submitModalForm(event)">
+            <div class="modal-form-group">
+                <label for="modal_name">Dein Name *</label>
+                <input 
+                    type="text" 
+                    id="modal_name" 
+                    name="modal_name" 
+                    required 
+                    placeholder="Max Mustermann"
+                    autocomplete="name"
+                >
+            </div>
+            
+            <div class="modal-form-group">
+                <label for="modal_email">Deine E-Mail *</label>
+                <input 
+                    type="email" 
+                    id="modal_email" 
+                    name="modal_email" 
+                    required 
+                    placeholder="max@example.com"
+                    autocomplete="email"
+                >
+            </div>
+            
+            <div class="modal-form-group">
+                <label for="modal_message">Nachricht an Dario (optional)</label>
+                <textarea 
+                    id="modal_message" 
+                    name="modal_message" 
+                    placeholder="Warum freust du dich auf Renaissance 2.0?"
+                ></textarea>
+            </div>
+            
+            <button type="submit" class="modal-submit-btn" id="modalSubmitBtn">
+                Weiter zur Zahlung →
+            </button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
