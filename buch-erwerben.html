@@ -1182,15 +1182,21 @@ function handlePayment(paymentMethod, paymentUrl) {
     formData.append('_template', 'table');
     formData.append('_captcha', 'false');
     
-    // 5. Visuelles Feedback
+    // 5. Visuelles Feedback - alle Buttons finden
     const allButtons = document.querySelectorAll('.payment-button');
+    const clickedButtons = Array.from(allButtons).filter(btn => 
+        btn.textContent.includes(paymentMethod === 'stripe' ? 'sicher bezahlen' : 'PayPal')
+    );
+    const clickedButton = clickedButtons[0];
+    
     allButtons.forEach(btn => {
         btn.disabled = true;
         btn.style.opacity = '0.6';
     });
     
-    const clickedButton = event.target;
-    clickedButton.textContent = '⏳ Bestellung wird übermittelt...';
+    if (clickedButton) {
+        clickedButton.textContent = '⏳ Bestellung wird übermittelt...';
+    }
     
     // 6. FormSubmit senden
     fetch('https://formsubmit.co/info@darioamavero.de', {
@@ -1206,7 +1212,9 @@ function handlePayment(paymentMethod, paymentUrl) {
         });
         
         // 7. Zur Zahlungsseite weiterleiten
-        clickedButton.textContent = '✅ Weiterleitung zur Zahlung...';
+        if (clickedButton) {
+            clickedButton.textContent = '✅ Weiterleitung zur Zahlung...';
+        }
         setTimeout(() => {
             window.open(paymentUrl, '_blank');
             
@@ -1216,9 +1224,11 @@ function handlePayment(paymentMethod, paymentUrl) {
                     btn.disabled = false;
                     btn.style.opacity = '1';
                 });
-                clickedButton.textContent = paymentMethod === 'stripe' 
-                    ? 'Jetzt sicher bezahlen - € 23,50' 
-                    : 'Mit PayPal bezahlen - € 23,50';
+                if (clickedButton) {
+                    clickedButton.textContent = paymentMethod === 'stripe' 
+                        ? 'Jetzt sicher bezahlen - € 23,50' 
+                        : 'Mit PayPal bezahlen - € 23,50';
+                }
             }, 1000);
         }, 500);
     })
@@ -1231,9 +1241,11 @@ function handlePayment(paymentMethod, paymentUrl) {
             btn.disabled = false;
             btn.style.opacity = '1';
         });
-        clickedButton.textContent = paymentMethod === 'stripe' 
-            ? 'Jetzt sicher bezahlen - € 23,50' 
-            : 'Mit PayPal bezahlen - € 23,50';
+        if (clickedButton) {
+            clickedButton.textContent = paymentMethod === 'stripe' 
+                ? 'Jetzt sicher bezahlen - € 23,50' 
+                : 'Mit PayPal bezahlen - € 23,50';
+        }
     });
 }
 
