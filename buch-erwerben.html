@@ -907,9 +907,9 @@ body {
                     Kreditkarte, Debitkarte, SEPA-Überweisung, Apple Pay, Google Pay. 
                     Sicher durch Stripe verarbeitet.
                 </div>
-                <a class="payment-button" href="https://buy.stripe.com/14A8wO32del56wVe7v2VG00" target="_blank" rel="noopener noreferrer">
+                <button type="button" class="payment-button" onclick="handlePayment('stripe', 'https://buy.stripe.com/14A8wO32del56wVe7v2VG00')">
                     Jetzt sicher bezahlen - € 23,50
-                </a>
+                </button>
             </div>
 
             <!-- PAYPAL OPTION -->
@@ -920,9 +920,9 @@ body {
                     Schnell, sicher und weltweit vertrauenswürdig. 
                     Mit PayPal-Käuferschutz für deine Sicherheit.
                 </div>
-                <a class="payment-button" href="https://www.paypal.com/ncp/payment/AW6YR4XXE556E" target="_blank" rel="noopener noreferrer">
+                <button type="button" class="payment-button" onclick="handlePayment('paypal', 'https://www.paypal.com/ncp/payment/AW6YR4XXE556E')">
                     Mit PayPal bezahlen - € 23,50
-                </a>
+                </button>
             </div>
 
         </div>
@@ -962,6 +962,9 @@ body {
                     <label class="form-label" for="message">Nachricht (optional)</label>
                     <textarea id="message" name="message" class="form-input" rows="3" placeholder="Warum freust du dich auf Renaissance 2.0?"></textarea>
                 </div>
+                
+                <!-- Verstecktes Feld für Zahlungsmethode -->
+                <input type="hidden" id="payment_method" name="payment_method" value="">
                 
                 <button type="submit" class="reservation-button">
                     ✨ Reservierung vormerken
@@ -1141,6 +1144,103 @@ function updateCountdown() {
     }
 }
 
+// =====================================================
+// NEUE ZAHLUNGSABWICKLUNG MIT FORMSUBMIT
+// =====================================================
+
+function handlePayment(paymentMethod, paymentUrl) {
+    // 1. Formular-Felder holen
+    const nameField = document.getElementById('name');
+    const emailField = document.getElementById('email');
+    const messageField = document.getElementById('message');
+    const paymentMethodField = document.getElementById('payment_method');
+    
+    // 2. Validierung: Name und E-Mail müssen ausgefüllt sein
+    if (!nameField.value.trim()) {
+        alert('⚠️ Bitte gib deinen Namen ein, damit wir deine Bestellung bearbeiten können.');
+        nameField.focus();
+        return;
+    }
+    
+    if (!emailField.value.trim() || !emailField.value.includes('@')) {
+        alert('⚠️ Bitte gib eine gültige E-Mail-Adresse ein, damit wir dich kontaktieren können.');
+        emailField.focus();
+        return;
+    }
+    
+    // 3. Zahlungsmethode setzen
+    const methodName = paymentMethod === 'stripe' ? 'Stripe (Kreditkarte/SEPA/etc.)' : 'PayPal';
+    paymentMethodField.value = methodName;
+    
+    // 4. FormData vorbereiten
+    const formData = new FormData();
+    formData.append('name', nameField.value);
+    formData.append('email', emailField.value);
+    formData.append('message', messageField.value || '(keine Nachricht)');
+    formData.append('payment_method', methodName);
+    formData.append('_subject', 'Renaissance 2.0 - Neue Bestellung (' + methodName + ')');
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+    
+    // 5. Visuelles Feedback
+    const allButtons = document.querySelectorAll('.payment-button');
+    allButtons.forEach(btn => {
+        btn.disabled = true;
+        btn.style.opacity = '0.6';
+    });
+    
+    const clickedButton = event.target;
+    clickedButton.textContent = '⏳ Bestellung wird übermittelt...';
+    
+    // 6. FormSubmit senden
+    fetch('https://formsubmit.co/info@darioamavero.de', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        console.log('✅ FormSubmit erfolgreich gesendet');
+        console.log('📧 E-Mail an info@darioamavero.de:', {
+            name: nameField.value,
+            email: emailField.value,
+            payment_method: methodName
+        });
+        
+        // 7. Zur Zahlungsseite weiterleiten
+        clickedButton.textContent = '✅ Weiterleitung zur Zahlung...';
+        setTimeout(() => {
+            window.open(paymentUrl, '_blank');
+            
+            // Button zurücksetzen
+            setTimeout(() => {
+                allButtons.forEach(btn => {
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                });
+                clickedButton.textContent = paymentMethod === 'stripe' 
+                    ? 'Jetzt sicher bezahlen - € 23,50' 
+                    : 'Mit PayPal bezahlen - € 23,50';
+            }, 1000);
+        }, 500);
+    })
+    .catch(error => {
+        console.error('❌ FormSubmit Fehler:', error);
+        alert('⚠️ Es gab ein Problem bei der Übermittlung. Bitte versuche es erneut oder kontaktiere uns unter info@darioamavero.de');
+        
+        // Button zurücksetzen
+        allButtons.forEach(btn => {
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        });
+        clickedButton.textContent = paymentMethod === 'stripe' 
+            ? 'Jetzt sicher bezahlen - € 23,50' 
+            : 'Mit PayPal bezahlen - € 23,50';
+    });
+}
+
+// =====================================================
+// ALTE PAYMENT FUNKTIONEN (werden nicht mehr verwendet)
+// =====================================================
+
 // STRIPE PAYMENT FUNCTION - SIMPLIFIED WITH PAYMENT LINK
 async function initiateStripePayment() {
     const button = document.getElementById('stripeButton');
@@ -1316,6 +1416,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const reservationForm = document.getElementById('reservationForm');
     if (reservationForm) {
         reservationForm.addEventListener('submit', function(e) {
+            // Zahlungsmethode für reine Reservierung setzen
+            const paymentMethodField = document.getElementById('payment_method');
+            if (paymentMethodField && !paymentMethodField.value) {
+                paymentMethodField.value = 'Nur Reservierung (noch keine Zahlung)';
+            }
+            
             setTimeout(() => {
                 const successMessage = document.querySelector('#reservationSection .success-message');
                 if (successMessage) {
