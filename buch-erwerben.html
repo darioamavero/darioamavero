@@ -887,30 +887,46 @@ body {
 }
 
 .amazon-btn {
-    display: inline-block;
-    padding: 1em 2em;
+    display: block;
+    width: 100%;
+    padding: 1.2em 1.5em;
     background: linear-gradient(135deg, #ff9900, #ffb347);
     color: #111;
     text-decoration: none;
     font-weight: 800;
-    border-radius: 30px;
-    font-size: 1.05em;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.5);
-    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 14px;
+    font-size: 1.1em;
+    box-shadow: 0 6px 20px rgba(255, 153, 0, 0.6);
+    border: none;
     cursor: pointer;
     letter-spacing: 0.02em;
+    animation: amazonPulse 2s ease-in-out infinite;
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(255,153,0,0.3);
 }
 
-.amazon-btn::after {
-    content: " →";
+@keyframes amazonPulse {
+    0%, 100% { box-shadow: 0 6px 20px rgba(255, 153, 0, 0.5); transform: scale(1); }
+    50% { box-shadow: 0 8px 28px rgba(255, 153, 0, 0.85); transform: scale(1.02); }
 }
 
-.amazon-btn:hover {
-    background: linear-gradient(135deg, #ffb347, #ff9900);
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(255, 153, 0, 0.7);
-    color: #111;
+.amazon-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 10px rgba(255, 153, 0, 0.4);
+}
+
+.amazon-tap-hint {
+    text-align: center;
+    font-size: 0.85em;
+    color: #8b6914;
+    margin-top: 0.6em;
+    font-style: italic;
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
 }
 
 .amazon-note {
@@ -1186,9 +1202,11 @@ body {
 
 <!-- HELDEN BUTTON - Nur 3.-5. April 2026 sichtbar -->
 <div id="heldenButton">
+    <p style="color:#fff;font-size:1em;margin-bottom:0.8em;animation:blink 1.2s ease-in-out infinite;">👆 Bitte hier tippen um zu Amazon zu gelangen 👆</p>
     <a href="https://www.amazon.de/dp/B0GT9DD7SR" class="helden-btn" target="_blank">
         🚀 Jetzt bei Amazon bestellen — Bestseller-Tag 4. April!
     </a>
+    <p style="color:#ffe0a0;font-size:0.9em;margin-top:0.8em;">👆 Auf den orangen Button tippen — direkt zu Amazon</p>
 </div>
 
     <!-- LIVE HEADER - dynamisch angepasst -->
@@ -1369,11 +1387,13 @@ body {
         </p>
         <div class="amazon-buttons">
             <a href="https://www.amazon.de/dp/B0GH5SVR2W" class="amazon-btn" target="_blank">
-                📱 Kindle eBook — 7,99 €
+                👆 HIER TIPPEN — Kindle eBook bei Amazon — 7,99 €
             </a>
+            <p class="amazon-tap-hint">👆 Auf den Button tippen um zu Amazon zu gelangen</p>
             <a href="https://www.amazon.de/dp/B0GT9DD7SR" class="amazon-btn" target="_blank">
-                📚 Taschenbuch — 21,39 €
+                👆 HIER TIPPEN — Taschenbuch bei Amazon — 21,39 €
             </a>
+            <p class="amazon-tap-hint">👆 Auf den Button tippen um zu Amazon zu gelangen</p>
         </div>
         <p class="amazon-note">Bei Amazon nicht signiert — hier beim Autor mit persönlicher Note. 💌</p>
     </div>
